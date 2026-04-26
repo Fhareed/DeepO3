@@ -1,0 +1,21 @@
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
+
+/* Hero cursor — tuned to sit on the baseline with the display font */
+.hero-cursor {
+  color: #69b5ff;
+  font-weight: 500;
+  transform: translateY(-0.02em);
+}

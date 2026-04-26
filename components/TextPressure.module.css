@@ -1,0 +1,36 @@
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stroke span {
+  position: relative;
+  color: var(--tp-text-color);
+}
+
+.stroke span::after {
+  content: attr(data-char);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: transparent;
+  z-index: -1;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: var(--tp-stroke-color);
+}
+
+.textPressureTitle {
+  color: var(--tp-text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  will-change: font-size;
+  contain: layout style paint;
+  white-space: nowrap;
+}
+
+.textPressureTitle span {
+  display: inline;
+  will-change: font-variation-settings;
+  contain: layout;
+}
