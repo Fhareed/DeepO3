@@ -139,29 +139,43 @@ export default function SolutionsPage() {
       </SectionReveal>
 
       <section className="case-grid">
-        {products.map((product, index) => (
-          <SectionReveal key={product.slug} delay={index * 0.08} amount={0.3}>
-            <GlareHover
-              className="glare-hover--fluid"
-              borderRadius="22px"
-              glareColor="#69b5ff"
-              glareOpacity={0.4}
-              glareAngle={-30}
-              glareSize={300}
-              transitionDuration={800}
-            >
-              <InfoCard className="card" variation={index} accent={product.accent}>
-                <p className="chip">{product.title}</p>
-                <p>{product.positioning}</p>
-                <div className="card-actions">
-                  <Link href={`/products/${product.slug}`} className="btn btn-ghost">
-                    Read Product Profile
-                  </Link>
-                </div>
-              </InfoCard>
-            </GlareHover>
-          </SectionReveal>
-        ))}
+        {products.map((product, index) => {
+          const liveDemo = product.demos.find((demo) => demo.href);
+
+          return (
+            <SectionReveal key={product.slug} delay={index * 0.08} amount={0.3}>
+              <GlareHover
+                className="glare-hover--fluid"
+                borderRadius="22px"
+                glareColor="#69b5ff"
+                glareOpacity={0.4}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={800}
+              >
+                <InfoCard className="card" variation={index} accent={product.accent}>
+                  <p className="chip">{product.title}</p>
+                  <p>{product.positioning}</p>
+                  <div className="card-actions">
+                    {liveDemo?.href && (
+                      <a
+                        href={liveDemo.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary"
+                      >
+                        Try Live Demo
+                      </a>
+                    )}
+                    <Link href={`/products/${product.slug}`} className="btn btn-ghost">
+                      Read Product Profile
+                    </Link>
+                  </div>
+                </InfoCard>
+              </GlareHover>
+            </SectionReveal>
+          );
+        })}
       </section>
 
       <SectionReveal>
