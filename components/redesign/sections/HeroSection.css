@@ -1,0 +1,223 @@
+/* ============================================================
+   HERO — Clarify-faithful full-bleed crystal stage.
+   Light/white page, one near-edge-to-edge rounded image, white
+   text overlaid top-left, a video play control + lightbox.
+   FLAT: no gradients (only a minimal text scrim) and no shadows
+   (the round play control carries one soft shadow). Font Onest,
+   DeepO3 teal accent. Extra top padding clears the fixed nav.
+   ============================================================ */
+
+.hero {
+  background: var(--dx-white);
+  /* Override .dx-section's padding-block so the stage sits on white,
+     clear of the fixed floating nav. */
+  padding-top: clamp(92px, 12vh, 120px);
+  padding-bottom: clamp(40px, 6vw, 80px);
+  padding-left: clamp(10px, 1.5vw, 22px);
+  padding-right: clamp(10px, 1.5vw, 22px);
+  position: relative;
+}
+
+/* ---------- Full-bleed image stage ---------- */
+.hero__stage {
+  position: relative;
+  width: 100%;
+  height: clamp(560px, 82vh, 900px);
+  border-radius: var(--dx-r-lg);
+  overflow: hidden;
+  background: var(--dx-paper-2);
+  isolation: isolate;
+}
+
+.hero__img,
+.hero__video-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Minimal text scrim — only enough to keep white text legible over
+   the top-left, plus a whisper at the bottom for the controls. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(105deg, rgba(20, 20, 20, 0.42), transparent 55%),
+    linear-gradient(to top, rgba(20, 20, 20, 0.26), transparent 32%);
+}
+
+/* ---------- Overlaid content, top-left ---------- */
+.hero__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 760px;
+  padding: clamp(28px, 5vw, 72px);
+}
+
+.hero__dot {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--dx-accent);
+  margin-bottom: clamp(20px, 2.4vw, 32px);
+}
+
+.hero .hero__title {
+  color: #fff;
+  /* A touch larger than the base display scale. */
+  font-size: clamp(50px, 6.3vw, 138px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.hero__sub {
+  margin-top: clamp(20px, 2vw, 28px);
+  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--dx-font);
+  font-size: var(--fs-lead);
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Bottom-right CTA ---------- */
+.hero__cta {
+  position: absolute;
+  right: clamp(28px, 5vw, 72px);
+  bottom: clamp(28px, 5vw, 72px);
+}
+
+/* ---------- Bottom-left video play control ---------- */
+.hero__play {
+  position: absolute;
+  left: clamp(28px, 5vw, 72px);
+  bottom: clamp(28px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero__play-btn {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  /* The one permitted soft shadow. */
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
+  transition: transform 0.45s var(--dx-ease-hover), background 0.3s var(--dx-ease-hover);
+}
+.hero__play-btn:hover {
+  transform: scale(1.06);
+  background: #fff;
+}
+.hero__play-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.hero__play-tri {
+  margin-left: 3px; /* optically center the triangle */
+}
+
+.hero__play-label {
+  color: #fff;
+  font-family: var(--dx-font);
+  font-weight: 500;
+  font-size: clamp(15px, 1vw, 18px);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Video lightbox ---------- */
+.hero__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.hero__close {
+  position: absolute;
+  top: clamp(16px, 3vw, 28px);
+  right: clamp(16px, 3vw, 28px);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s var(--dx-ease-hover);
+}
+.hero__close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+.hero__close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.hero__lightbox-inner {
+  width: min(1100px, 100%);
+}
+
+.hero__video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--dx-r-lg);
+  overflow: hidden;
+  background: #000;
+}
+.hero__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .hero__stage {
+    height: clamp(500px, 88vh, 720px);
+  }
+  .hero__content {
+    max-width: 100%;
+    padding: 24px;
+  }
+  /* Stack the controls bottom-left so the button and play control
+     never overlap on narrow screens. */
+  .hero__cta {
+    left: 24px;
+    right: auto;
+    bottom: calc(24px + 72px + 18px);
+  }
+  .hero__play {
+    left: 24px;
+    bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__play-btn {
+    transition: none;
+  }
+}

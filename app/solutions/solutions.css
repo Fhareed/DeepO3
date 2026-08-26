@@ -1,0 +1,269 @@
+/* ============================================================
+   Solutions page — Clarify-faithful, light, FLAT.
+   White / paper alternation, hairline borders, rounded imagery,
+   generous whitespace, ONE teal accent used sparingly.
+   Builds on the dx- design system; only sol- overrides live here.
+   No shadows, gradients or blur.
+   ============================================================ */
+
+/* ---------- 1 · Page header ---------- */
+.sol-hero-title {
+  margin-top: clamp(20px, 2vw, 30px);
+  max-width: 18ch;
+}
+
+.sol-hero-lead {
+  margin-top: clamp(22px, 2vw, 30px);
+  max-width: 640px;
+}
+
+.sol-head-actions {
+  margin-top: clamp(32px, 3vw, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ---------- 2 · Core-capability cards ---------- */
+.sol-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 3.4vw, 52px);
+}
+
+/* Reveal cell + tilt fill the grid row so cards stay equal height. */
+.sol-cap-item {
+  display: flex;
+  height: 100%;
+}
+.sol-cap-tilt {
+  height: 100%;
+  width: 100%;
+}
+.sol-cap-tilt .dx-tilt__inner {
+  display: flex;
+  flex-direction: column;
+}
+.sol-cap-tilt .sol-card {
+  flex: 1;
+}
+
+/* Flat white card: image on top, hairline border, no shadow. */
+.sol-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r-lg);
+  padding: clamp(20px, 2.2vw, 30px);
+}
+
+.sol-card-media {
+  width: 100%;
+}
+
+.sol-card-body {
+  margin-top: clamp(22px, 2vw, 30px);
+  display: flex;
+  flex-direction: column;
+}
+
+.sol-card-chip {
+  align-self: flex-start;
+}
+
+.sol-card-title {
+  margin-top: 16px;
+}
+
+.sol-card-text {
+  margin-top: 14px;
+}
+
+/* ---------- 2b · Live in production (PaperPilot) ---------- */
+.sol-live-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 4vw, 72px);
+  align-items: center;
+  margin-top: clamp(34px, 4vw, 60px);
+}
+
+.sol-live-media {
+  width: 100%;
+}
+
+.sol-live-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sol-live-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.sol-live-name {
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.sol-live-lead {
+  margin: 0;
+  max-width: 46ch;
+}
+
+.sol-live-list {
+  list-style: none;
+  margin: clamp(22px, 2.4vw, 30px) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sol-live-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sol-live-feat .sol-check {
+  flex: none;
+  color: var(--dx-accent);
+  margin-top: 3px;
+}
+
+.sol-live-feat .dx-body {
+  margin: 0;
+}
+
+.sol-live-actions {
+  margin-top: clamp(30px, 3vw, 42px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ---------- 3 · Engagement models ---------- */
+.sol-en-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(30px, 3.6vw, 60px);
+  align-items: stretch;
+}
+
+.sol-en-item {
+  height: 100%;
+}
+.sol-en-tilt {
+  height: 100%;
+  width: 100%;
+}
+.sol-en-tilt .dx-tilt__inner {
+  display: flex;
+  flex-direction: column;
+}
+.sol-en-tilt .sol-en-card {
+  flex: 1;
+}
+
+.sol-en-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r-lg);
+  padding: clamp(36px, 3.6vw, 54px);
+}
+
+/* Emphasized middle card — accent border only, still flat. */
+.sol-en-card--featured {
+  border-color: var(--dx-accent);
+}
+
+.sol-en-name {
+  display: block;
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+  margin-bottom: 16px;
+}
+
+.sol-en-title {
+  margin-bottom: 18px;
+}
+
+.sol-en-body {
+  margin: 0;
+}
+
+/* ---------- 4 · Closing CTA ---------- */
+.sol-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sol-cta-eyebrow {
+  justify-content: center;
+}
+
+.sol-cta-title {
+  margin-top: clamp(18px, 2vw, 26px);
+  max-width: 16ch;
+}
+
+.sol-cta-lead {
+  margin-top: clamp(22px, 2vw, 28px);
+  max-width: 620px;
+}
+
+.sol-cta-actions {
+  margin-top: clamp(32px, 3vw, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .sol-cap-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .sol-live-row {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .sol-en-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 440px;
+    margin-inline: auto;
+  }
+}

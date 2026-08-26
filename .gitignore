@@ -23,3 +23,6 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 
+
+# local delivery/cleanup scratch (safe to delete, not part of the project)
+/_CLEANUP_DELETE_ME

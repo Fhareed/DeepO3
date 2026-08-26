@@ -1,0 +1,172 @@
+/* ============================================================
+   Capabilities section — Clarify "Services", faithful & flat.
+   A full-width ACCORDION of huge-text rows (not cards).
+   Light, warm-neutral, crisp: 1px hairline dividers, no shadows,
+   no gradients, no blur. One accent — DeepO3 teal. cap- overrides
+   only; everything else rides the dx- system in app/redesign.css.
+   ============================================================ */
+
+.cap-section {
+  position: relative;
+  background: var(--dx-white);
+}
+
+/* Intro paragraph under the eyebrow (left-aligned head) */
+.cap-intro {
+  max-width: 620px;
+}
+
+/* ---------- Accordion list: full width of the container ---------- */
+.cap-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* top hairline so the first row is bounded above too */
+  border-top: 1px solid var(--dx-line-2);
+}
+
+/* Each row carries the bottom hairline */
+.cap-row {
+  border-bottom: 1px solid var(--dx-line-2);
+}
+
+/* ---------- Row header: thumbnail + enormous title + toggle ---------- */
+.cap-header {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+  width: 100%;
+  margin: 0;
+  padding: clamp(28px, 3.5vw, 52px) 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--dx-ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Small rounded thumbnail on the left */
+.cap-thumb {
+  flex: none;
+  width: clamp(64px, 7vw, 104px);
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--dx-r-sm);
+  display: block;
+  background: var(--dx-paper-2);
+}
+
+/* Enormous service title in Onest */
+.cap-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--dx-font);
+  font-size: clamp(40px, 7.5vw, 116px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--dx-ink);
+}
+
+/* ---------- Clarify "+" toggle, far right (filled thin plus, no circle) ---------- */
+.cap-toggle {
+  flex: none;
+  width: clamp(26px, 3vw, 40px);
+  height: clamp(26px, 3vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d1ccc7; /* Clarify's warm-grey plus */
+  transition: transform 0.5s cubic-bezier(0.12, 0.05, 0.205, 0.995),
+    color 0.4s cubic-bezier(0.12, 0.05, 0.205, 0.995);
+}
+.cap-header:hover .cap-toggle {
+  color: var(--dx-ink);
+}
+.cap-toggle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* "+" rotates 45deg into an "×" when the row is open */
+.cap-toggle[data-open="true"] {
+  transform: rotate(45deg);
+  color: var(--dx-ink);
+}
+
+/* ---------- Accordion panel: grid-rows 0fr -> 1fr trick ---------- */
+.cap-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.12, 0.05, 0.205, 0.995);
+}
+.cap-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.cap-panel-inner {
+  overflow: hidden;
+}
+
+/* Two-column content: sub-label left, descriptor + paragraph right */
+.cap-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, 240px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 72px);
+  padding-bottom: clamp(24px, 3vw, 48px);
+}
+
+/* Left sub-label — IBM Plex, uppercase, muted */
+.cap-sublabel {
+  margin: 0;
+  padding-top: 6px;
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+/* Right column */
+.cap-detail {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.4vw, 22px);
+  max-width: 720px;
+}
+.cap-descriptor {
+  color: var(--dx-ink);
+}
+.cap-paragraph {
+  color: var(--dx-muted);
+}
+
+/* ---------- CTA below the list ---------- */
+.cap-cta {
+  margin-top: clamp(56px, 6vw, 88px);
+}
+
+/* ---------- Responsive: stack the panel columns on mobile ---------- */
+@media (max-width: 720px) {
+  .cap-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .cap-sublabel {
+    padding-top: 0;
+  }
+  .cap-thumb {
+    width: 56px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cap-toggle,
+  .cap-panel {
+    transition: none;
+  }
+}

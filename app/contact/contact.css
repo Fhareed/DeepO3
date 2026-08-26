@@ -1,0 +1,219 @@
+/* ============================================================
+   Contact page — Clarify-faithful, light, FLAT.
+   Two-column body: contact details (left) + styled form (right).
+   Builds on the dx- design system; only ct- overrides live here.
+   No shadows, gradients or blur.
+   ============================================================ */
+
+/* ---------- 1 · Page header ---------- */
+.ct-hero-title {
+  margin-top: clamp(20px, 2vw, 30px);
+  max-width: 20ch;
+}
+
+.ct-hero-lead {
+  margin-top: clamp(22px, 2vw, 30px);
+  max-width: 640px;
+}
+
+/* ---------- 2 · Two-column body ---------- */
+.ct-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(40px, 5vw, 96px);
+  align-items: start;
+}
+
+/* ----- Left · contact details ----- */
+.ct-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.ct-details-lead {
+  margin-top: clamp(20px, 2vw, 28px);
+  max-width: 42ch;
+}
+
+.ct-channels {
+  margin-top: clamp(32px, 3.4vw, 52px);
+  display: flex;
+  flex-direction: column;
+}
+
+.ct-channel {
+  padding-block: clamp(20px, 2vw, 26px);
+  border-top: 1px solid var(--dx-line-2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ct-channel:last-child {
+  border-bottom: 1px solid var(--dx-line-2);
+}
+
+.ct-channel-label {
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ct-channel-value {
+  font-size: clamp(18px, 1.4vw, 23px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--dx-ink);
+}
+
+.ct-channel-note {
+  margin: 0;
+}
+
+/* ----- Right · form card ----- */
+.ct-form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2vw, 26px);
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r-lg);
+  padding: clamp(28px, 3vw, 46px);
+}
+
+.ct-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 2vw, 26px);
+}
+
+.ct-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.ct-label {
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ct-input,
+.ct-textarea {
+  width: 100%;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r);
+  padding: 14px 16px;
+  font-family: var(--dx-font);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--dx-ink);
+  transition: border-color 0.3s var(--dx-ease-hover);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.ct-input::placeholder,
+.ct-textarea::placeholder {
+  color: var(--dx-muted);
+}
+
+.ct-input:focus,
+.ct-textarea:focus {
+  outline: none;
+  border-color: var(--dx-accent);
+}
+
+.ct-textarea {
+  resize: vertical;
+  min-height: 152px;
+}
+
+.ct-input:disabled,
+.ct-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Submit — the signature pill button, driven as a native submit. */
+.ct-submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.ct-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ct-submit:disabled .dx-btn__fill {
+  transform: translateX(-101%);
+}
+
+.ct-status {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  color: var(--dx-body);
+}
+
+.ct-status[data-status="success"] {
+  color: var(--dx-accent-strong);
+}
+
+.ct-status[data-status="error"] {
+  color: #b3462f;
+}
+
+/* ---------- 3 · Closing CTA ---------- */
+.ct-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ct-cta-eyebrow {
+  justify-content: center;
+}
+
+.ct-cta-title {
+  margin-top: clamp(18px, 2vw, 26px);
+  max-width: 16ch;
+}
+
+.ct-cta-lead {
+  margin-top: clamp(22px, 2vw, 28px);
+  max-width: 600px;
+}
+
+.ct-cta-actions {
+  margin-top: clamp(30px, 3vw, 44px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .ct-grid {
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vw, 60px);
+  }
+}
+
+@media (max-width: 560px) {
+  .ct-row {
+    grid-template-columns: 1fr;
+  }
+}

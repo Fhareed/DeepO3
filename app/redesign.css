@@ -1,0 +1,283 @@
+/* ============================================================
+   DeepO3 — Clarify-faithful design system (light, "crystal")
+   Rebuilt from the live Clarify template's own CSS + IX2 data:
+   - Font: Onest (Aspekta substitute) + IBM Plex Sans labels
+   - Fluid vw type scale (the "font enlargement")
+   - Warm-neutral palette, ONE accent (DeepO3 teal, used like
+     Clarify uses its pale yellow), FLAT: no shadows/gradients/blur
+   - Huge whitespace, rounded imagery, masked reveals
+   dx- prefix keeps it isolated from legacy globals.universal.css.
+   ============================================================ */
+
+/* Aspekta — the EXACT Clarify typeface (open-source, served from the
+   author's repo via jsDelivr). Falls back to Onest if the CDN is blocked. */
+@font-face {
+  font-family: "Aspekta";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/ivodolenc/aspekta@2.000/fonts/webfonts/Aspekta-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Aspekta";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/ivodolenc/aspekta@2.000/fonts/webfonts/Aspekta-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Aspekta";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/ivodolenc/aspekta@2.000/fonts/webfonts/Aspekta-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Aspekta";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/ivodolenc/aspekta@2.000/fonts/webfonts/Aspekta-700.woff2") format("woff2");
+}
+
+:root {
+  /* Warm-neutral surfaces + ink (from Clarify) */
+  --dx-white: #ffffff;
+  --dx-paper: #f5f4f3;      /* lightest-grey */
+  --dx-paper-2: #efeeec;    /* light-grey / borders */
+  --dx-ink: #2a2928;        /* warm near-black text */
+  --dx-body: #63615e;       /* dark-grey body copy */
+  --dx-muted: #96938f;      /* medium-grey */
+  --dx-line: #efeeec;
+  --dx-line-2: rgba(42, 41, 40, 0.10);
+  --dx-dark: #232221;       /* dark sections */
+
+  /* Single accent — DeepO3 teal (echoes the logo), used sparingly */
+  --dx-accent: #12919b;         /* deep teal: arrows, dots, small marks */
+  --dx-accent-strong: #0f7f89;
+  --dx-accent-pale: #d7efef;    /* pale teal: button fill + hover wipe + chips */
+  --dx-navy: #003a63;           /* logo navy, used minimally */
+
+  /* Radii (Clarify: 8/12/16/24) */
+  --dx-r-xs: 8px;
+  --dx-r-sm: 12px;
+  --dx-r: 16px;
+  --dx-r-lg: 24px;
+
+  /* Motion — Clarify's two master curves */
+  --dx-ease-reveal: cubic-bezier(0.12, 0.05, 0.205, 0.995);
+  --dx-ease-hover: cubic-bezier(0.62, 0.05, 0.01, 0.99);
+
+  /* Fluid type scale (vw-based, the source of the "crystal/4K" feel) */
+  --fs-huge: clamp(68px, 12vw, 240px);      /* stat numbers */
+  --fs-display: clamp(52px, 5.867vw, 128px); /* hero H1 */
+  --fs-h2: clamp(33px, 3.4vw, 62px);
+  --fs-h3: clamp(23px, 2.4vw, 40px);
+  --fs-lead: clamp(18px, 1.55vw, 25px);
+  --fs-body: clamp(16.5px, 1.15vw, 20px);
+  --fs-label: clamp(11px, 0.78vw, 13px);
+
+  /* Fonts (wired in layout.tsx via next/font) */
+  --dx-font: "Aspekta", var(--font-onest), "Onest", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --dx-font-label: var(--font-plex), "IBM Plex Sans", -apple-system, sans-serif;
+
+  --dx-container: 1320px;
+  --dx-gutter: clamp(22px, 4vw, 56px);
+  --dx-section: clamp(120px, 13vw, 224px);
+}
+
+/* Homepage light body (toggled only on "/") */
+body.dx-home {
+  background: var(--dx-white) !important;
+  color: var(--dx-ink);
+  font-family: var(--dx-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body.dx-home .silk-background,
+body.dx-home .site-bottom-gradual-blur { display: none !important; }
+
+.dx-page {
+  font-family: var(--dx-font);
+  color: var(--dx-ink);
+  background: var(--dx-white);
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.011em;
+}
+.dx-page ::selection { background: var(--dx-accent-pale); }
+
+/* ---------- Responsive safety net ----------
+   .dx-page already clips horizontal overflow; make sure long words, emails,
+   and URLs WRAP (rather than get clipped) and media never exceeds its column. */
+.dx-page img,
+.dx-page video { max-width: 100%; }
+.dx-body, .dx-lead, .dx-display,
+.dx-h2, .dx-h3, .dx-eyebrow, .dx-textlink { overflow-wrap: break-word; }
+
+/* ---------- Layout ---------- */
+.dx-container { width: 100%; max-width: var(--dx-container); margin: 0 auto; padding-inline: var(--dx-gutter); }
+.dx-container--narrow { max-width: 940px; }
+.dx-section { padding-block: var(--dx-section); position: relative; }
+.dx-section--paper { background: var(--dx-paper); }
+.dx-section--dark { background: var(--dx-dark); color: #eeecea; }
+
+/* ---------- Typography ---------- */
+.dx-page h1, .dx-page h2, .dx-page h3, .dx-page h4 {
+  font-family: var(--dx-font);
+  font-weight: 500;
+  color: inherit;
+  margin: 0;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.dx-display { font-size: var(--fs-display); font-weight: 500; line-height: 0.95; letter-spacing: -0.035em; }
+.dx-h2 { font-size: var(--fs-h2); font-weight: 500; line-height: 1.0; letter-spacing: -0.03em; }
+.dx-h3 { font-size: var(--fs-h3); font-weight: 500; line-height: 1.04; letter-spacing: -0.03em; }
+.dx-huge { font-size: var(--fs-huge); font-weight: 500; line-height: 0.82; letter-spacing: -0.04em; }
+
+.dx-lead { font-size: var(--fs-lead); font-weight: 400; line-height: 1.42; letter-spacing: -0.02em; color: var(--dx-ink); }
+.dx-body { font-size: var(--fs-body); font-weight: 400; line-height: 1.5; letter-spacing: -0.01em; color: var(--dx-body); margin: 0; }
+.dx-muted { color: var(--dx-muted); }
+
+/* Eyebrow — IBM Plex Sans 700 uppercase with the Clarify "•" dot */
+.dx-eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--dx-font-label);
+  font-size: var(--fs-label); font-weight: 700; line-height: 1;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--dx-ink);
+  margin: 0;
+}
+.dx-eyebrow::before { content: "•"; color: var(--dx-accent); font-size: 1.15em; line-height: 0; }
+.dx-eyebrow--light { color: #efeeec; }
+
+/* Section header block */
+.dx-section-head { max-width: 780px; margin: 0 0 clamp(56px, 6.5vw, 104px); display: flex; flex-direction: column; gap: 24px; }
+.dx-section-head--center { margin-inline: auto; align-items: center; text-align: center; }
+
+/* ---------- Signature button (styles used by Btn.tsx) ---------- */
+.dx-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 0;
+  background: var(--dx-paper); color: var(--dx-ink);
+  border-radius: var(--dx-r); padding: 6px 6px 6px 20px;
+  font-family: var(--dx-font); font-weight: 500; font-size: clamp(15px, 1vw, 18px);
+  text-decoration: none; overflow: hidden; border: none; cursor: pointer;
+  line-height: 1.3;
+}
+.dx-btn__fill {
+  position: absolute; inset: 0; z-index: 0; background: var(--dx-accent-pale);
+  transform: translateX(-101%); transition: transform 0.75s var(--dx-ease-hover);
+}
+.dx-btn:hover .dx-btn__fill { transform: translateX(0); }
+.dx-btn__label { position: relative; z-index: 1; padding-right: 16px; white-space: nowrap; }
+.dx-btn__chip {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 12px; background: var(--dx-accent-pale);
+  color: var(--dx-accent-strong); overflow: hidden; flex: none;
+}
+.dx-btn__arrow { position: absolute; inset: 0; display: grid; place-items: center; transition: transform 0.55s var(--dx-ease-hover); }
+.dx-btn__arrow svg { width: 16px; height: 16px; }
+.dx-btn__arrow--in { transform: translateX(-150%); }
+.dx-btn:hover .dx-btn__arrow--out { transform: translateX(150%); }
+.dx-btn:hover .dx-btn__arrow--in { transform: translateX(0); }
+/* variants */
+.dx-btn--paper2 { background: var(--dx-paper-2); }
+.dx-btn--white { background: var(--dx-white); border: 1px solid var(--dx-line-2); }
+.dx-btn--onDark { background: rgba(255,255,255,0.08); color: #fff; }
+.dx-btn--onDark .dx-btn__fill { background: rgba(255,255,255,0.14); }
+.dx-btn--onDark .dx-btn__chip { background: #fff; color: var(--dx-ink); }
+
+/* text / underline-reveal link */
+.dx-textlink {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  color: var(--dx-ink); font-weight: 500; text-decoration: none; padding-bottom: 3px;
+}
+.dx-textlink::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
+  background: var(--dx-ink); transform: scaleX(0); transform-origin: 0%; transition: transform 0.5s var(--dx-ease-hover); }
+.dx-textlink:hover::after { transform: scaleX(1); }
+.dx-textlink svg { transition: transform 0.4s var(--dx-ease-hover); }
+.dx-textlink:hover svg { transform: translateX(4px); }
+
+/* ---------- Chips / labels ---------- */
+.dx-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--dx-font-label); font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  padding: 7px 13px; border-radius: 999px; background: var(--dx-white); color: var(--dx-ink);
+  border: 1px solid var(--dx-line-2);
+}
+
+/* ---------- Rounded image frame + masked reveal (RevealImage.tsx) ---------- */
+.dx-imgframe { position: relative; overflow: hidden; border-radius: var(--dx-r-lg); background: var(--dx-paper-2); }
+.dx-imgframe img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dx-imgframe__curtain { position: absolute; inset: 0; background: var(--dx-paper); z-index: 2;
+  transform: translateY(0); transition: transform 1.15s cubic-bezier(0.52, 0.05, 0.01, 0.99); }
+.dx-imgframe[data-shown="true"] .dx-imgframe__curtain { transform: translateY(101%); }
+.dx-imgframe__img { transform: scale(1.4); transition: transform 1.25s var(--dx-ease-reveal); }
+.dx-imgframe[data-shown="true"] .dx-imgframe__img { transform: scale(1); }
+
+/* ---------- Marquee (26s linear, no hover pause — like Clarify) ---------- */
+.dx-marquee { overflow: hidden; width: 100%; }
+.dx-marquee__track { display: flex; width: max-content; animation: dx-marquee 26s linear infinite; }
+.dx-marquee__item { display: inline-flex; align-items: center; gap: 12px; padding-inline: clamp(26px, 3.5vw, 60px);
+  font-size: clamp(20px, 2vw, 34px); font-weight: 500; letter-spacing: -0.03em; color: var(--dx-muted); white-space: nowrap; }
+@keyframes dx-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- Divider ---------- */
+.dx-rule { height: 1px; background: var(--dx-line-2); border: 0; width: 100%; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .dx-marquee__track { animation: none; }
+  .dx-btn__fill, .dx-btn__arrows, .dx-imgframe__curtain, .dx-imgframe__img, .dx-textlink::after { transition: none; }
+}
+
+/* ---------- Tilt + shine card (TiltCard.tsx) ---------- */
+.dx-tilt { display: block; }
+/* Stretched-link: makes the whole card clickable so the tilt (which shifts
+   thin links out from under the cursor near the edges) can never break a
+   click. The primary link's ::after covers the card; real interactive
+   controls sit above it with z-index. */
+.dx-stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.dx-above { position: relative; z-index: 2; }
+.dx-tilt__inner {
+  position: relative;
+  height: 100%;
+  border-radius: var(--dx-r-lg);
+  transform: perspective(1100px) rotateX(var(--tc-rx, 0deg)) rotateY(var(--tc-ry, 0deg));
+  transition: transform 0.13s var(--dx-ease-hover), box-shadow 0.35s var(--dx-ease-hover);
+  will-change: transform;
+}
+.dx-tilt:hover .dx-tilt__inner {
+  box-shadow: 0 26px 60px rgba(42, 41, 40, 0.13);
+}
+/* moving shine: a soft highlight that follows the cursor + a faint sheen streak */
+.dx-tilt__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 4;
+  opacity: var(--tc-on, 0);
+  transition: opacity 0.35s var(--dx-ease-hover);
+  background:
+    radial-gradient(circle at var(--tc-gx, 50%) var(--tc-gy, 50%), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 45%),
+    linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.28) 50%, transparent 60%);
+  mix-blend-mode: soft-light;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dx-tilt__inner { transform: none !important; transition: none; }
+  .dx-tilt__glare { display: none; }
+}
+@media (hover: none) {
+  .dx-tilt__inner { transform: none !important; }
+  .dx-tilt__glare { display: none; }
+}
+
+/* ---------- Nav logo: black mark + buzzing wordmark ---------- */
+.dx-navlogo { display: inline-flex; align-items: center; gap: 11px; }
+.dx-navlogo__mark { height: 30px; width: auto; display: block; }
+
+/* ---------- Inner-page header: clears the fixed floating nav ---------- */
+.dx-pagehead { padding-top: clamp(138px, 18vh, 230px); padding-bottom: clamp(40px, 5vw, 80px); }

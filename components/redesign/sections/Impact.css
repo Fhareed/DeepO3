@@ -1,0 +1,96 @@
+/* ============================================================
+   Impact — Clarify-faithful, light, flat. Centered head over
+   two alternating photo/text rows. Only im- overrides here;
+   everything else leans on the dx- design system.
+   No shadows, no gradients, no blur.
+   ============================================================ */
+
+.im-section {
+  background: var(--dx-white);
+}
+
+/* ---------- Centered head ---------- */
+.im-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  max-width: 760px;
+  margin: 0 auto clamp(56px, 7vw, 96px);
+}
+.im-title {
+  color: var(--dx-ink);
+}
+
+/* ---------- Rows ---------- */
+.im-rows {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 10vw, 120px);
+}
+
+.im-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+/* DOM order is media-first, so the default row shows the image on the
+   LEFT (Row 2). Row 1 flips it to the RIGHT on desktop. */
+.im-row--right .im-media {
+  order: 2;
+}
+.im-row--right .im-text {
+  order: 1;
+}
+
+/* ---------- Media ---------- */
+.im-media {
+  width: 100%;
+}
+
+/* ---------- Text column ---------- */
+.im-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 2.4vw, 30px);
+}
+
+/* Each sub-block: thin top hairline + a little breathing room. */
+.im-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: clamp(18px, 2vw, 24px);
+  border-top: 1px solid var(--dx-line-2);
+}
+
+.im-block__head {
+  margin: 0;
+  font-family: var(--dx-font);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--dx-ink);
+}
+
+.im-block__body {
+  margin: 0;
+  color: var(--dx-muted);
+}
+
+/* ---------- Responsive: stack, image always first ---------- */
+@media (max-width: 860px) {
+  .im-row {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 40px);
+  }
+  /* Reset the desktop reorder so DOM order (media first) applies. */
+  .im-row--right .im-media,
+  .im-row--right .im-text {
+    order: 0;
+  }
+}

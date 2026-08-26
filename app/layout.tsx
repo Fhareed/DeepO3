@@ -1,12 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Onest, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.universal.css";
-import { StartupLoader } from "../components/StartupLoader";
+import "./redesign.css";
+import LegacyChrome from "../components/LegacyChrome";
 
-const displayFont = Space_Grotesk({
+// Onest = closest Google Font to Clarify's Aspekta (crisp low-contrast grotesque)
+const onestFont = Onest({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-display",
+  variable: "--font-onest",
+  display: "swap"
+});
+
+// IBM Plex Sans = Clarify's uppercase eyebrow/label font
+const plexFont = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-plex",
   display: "swap"
 });
 
@@ -16,13 +26,6 @@ const monoFont = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap"
 });
-import Silk from "../components/Silk";
-import GradualBlur from "../components/GradualBlur";
-import ClickSpark from "../components/ClickSpark";
-import StaggeredMenu from "../components/StaggeredMenu";
-import GlobalScrollStack from "../components/GlobalScrollStack";
-import CinematicFooter from "../components/CinematicFooter";
-import FuzzyText from "../components/FuzzyText";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://deepo3.com";
@@ -89,26 +92,12 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  colorScheme: "dark",
+  colorScheme: "light",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0c0f16" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0f16" }
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#003a63" }
   ]
 };
-
-const menuItems = [
-  { label: "Home", ariaLabel: "Go to home page", link: "/" },
-  { label: "Products", ariaLabel: "View the product suite", link: "/products" },
-  { label: "Solutions", ariaLabel: "View solutions", link: "/solutions" },
-  { label: "Case Studies", ariaLabel: "Read case studies", link: "/case-studies" },
-  { label: "Contact", ariaLabel: "Get in touch", link: "/contact" }
-];
-
-const socialItems = [
-  { label: "Email", link: "mailto:contact@deepo3.com" },
-  { label: "LinkedIn", link: "https://linkedin.com" },
-  { label: "GitHub", link: "https://github.com" }
-];
 
 export default function RootLayout({
   children
@@ -116,88 +105,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${displayFont.variable} ${monoFont.variable}`}>
+    <html
+      lang="en"
+      className={`${onestFont.variable} ${plexFont.variable} ${monoFont.variable}`}
+    >
       <body id="site-top">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <StartupLoader />
-        <div className="silk-background" aria-hidden>
-          <Silk
-            speed={5}
-            scale={1}
-            color="#7B7481"
-            noiseIntensity={1.5}
-            rotation={0}
-          />
-        </div>
-
-        {/* ClickSpark wraps the whole site so clicks anywhere produce the spark effect */}
-        <ClickSpark
-          sparkColor="#ffffff"
-          sparkSize={10}
-          sparkRadius={15}
-          sparkCount={8}
-          duration={400}
-          easing="ease-out"
-          extraScale={1}
-        >
-          <div className="site-chrome">
-            <StaggeredMenu
-              position="right"
-              items={menuItems}
-              socialItems={socialItems}
-              displaySocials={true}
-              displayItemNumbering={true}
-              menuButtonColor="#ffffff"
-              openMenuButtonColor="#0c0f16"
-              changeMenuColorOnOpen={true}
-              colors={["#1B1722", "#2F293A", "#5227FF"]}
-              accentColor="#69b5ff"
-              isFixed={true}
-              closeOnClickAway={true}
-              logoUrl={
-                <span className="deepo3-wordmark" aria-label="DeepO3">
-                  <FuzzyText
-                    fontSize="1.85rem"
-                    fontWeight={700}
-                    color="#ffffff"
-                    baseIntensity={0.04}
-                    hoverIntensity={0.24}
-                    fuzzRange={6}
-                    direction="horizontal"
-                    transitionDuration={3}
-                  >
-                    DeepO3
-                  </FuzzyText>
-                </span>
-              }
-              className="site-staggered-menu"
-            />
-
-            <div className="main-content-shell">
-              <main id="main-content" tabIndex={-1}>
-                {children}
-              </main>
-            </div>
-
-            <GlobalScrollStack />
-            <CinematicFooter />
-
-            <GradualBlur
-              target="page"
-              preset="footer"
-              position="bottom"
-              height="4rem"
-              strength={3.8}
-              divCount={12}
-              curve="linear"
-              exponential
-              opacity={1}
-              className="site-bottom-gradual-blur"
-            />
-          </div>
-        </ClickSpark>
+        <LegacyChrome>{children}</LegacyChrome>
       </body>
     </html>
   );

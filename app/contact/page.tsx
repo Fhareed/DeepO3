@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import InfoCard from "../../components/InfoCard";
-import GlareHover from "../../components/GlareHover";
-import TiltedPanel from "../../components/TiltedPanel";
-import SectionReveal from "../../components/SectionReveal";
-import ContactForm from "../../components/ContactForm";
+import Reveal from "../../components/redesign/Reveal";
+import Btn from "../../components/redesign/Btn";
+import ContactFormNew from "./ContactFormNew";
+import "./contact.css";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,196 +18,109 @@ export const metadata: Metadata = {
   }
 };
 
-const intakeFlow = [
-  {
-    step: "Step 01",
-    title: "Receive",
-    body: "Your brief lands with the team that would lead the engagement — no inbox triage, no account managers in between."
-  },
-  {
-    step: "Step 02",
-    title: "Respond",
-    body: "We reply within two business days with a practical build path, clarifying questions, and indicative scope."
-  },
-  {
-    step: "Step 03",
-    title: "Discovery",
-    body: "If there is fit, we schedule a short discovery call to validate scope, timeline, and team composition before any commitment."
-  }
-];
-
-const channels = [
-  {
-    label: "Email",
-    title: "contact@deepo3.com",
-    body: "Direct line to the partnership team. Expect a reply inside two business days.",
-    href: "mailto:contact@deepo3.com",
-    cta: "Send an email"
-  },
-  {
-    label: "LinkedIn",
-    title: "DeepO3 on LinkedIn",
-    body: "Company updates, launches, and the people behind each engagement.",
-    href: "https://linkedin.com",
-    cta: "Open profile"
-  },
-  {
-    label: "Discovery call",
-    title: "Book a 30-minute intro",
-    body: "A short, no-commitment session to understand your workflow and explore fit.",
-    href: "/contact",
-    cta: "Request a slot"
-  }
-];
-
 export default function ContactPage() {
   return (
-    <div className="page-shell">
-      <SectionReveal>
-        <GlareHover
-          className="glare-hover--fluid"
-          borderRadius="22px"
-          glareColor="#ffffff"
-          glareOpacity={0.35}
-          glareAngle={-30}
-          glareSize={260}
-          transitionDuration={900}
-        >
-          <TiltedPanel>
-          <section className="hero glass">
-            <p className="eyebrow">Contact</p>
-            <h1>Design your next intelligent system with us.</h1>
-            <p className="lead">
+    <div className="dx-page">
+      {/* 1 — Page header (clears the fixed floating nav) */}
+      <section className="dx-section dx-pagehead">
+        <div className="dx-container">
+          <Reveal>
+            <p className="dx-eyebrow">Contact</p>
+          </Reveal>
+          <Reveal index={1}>
+            <h1 className="dx-display ct-hero-title">
+              Design your next intelligent system with us.
+            </h1>
+          </Reveal>
+          <Reveal index={2}>
+            <p className="dx-lead ct-hero-lead">
               Tell us about the workflow you are trying to transform. We respond
               with a practical build path — not a sales deck.
             </p>
-            <dl className="hero-proof">
-              <div className="hero-proof-item">
-                <dt>2 days</dt>
-                <dd>Average response time</dd>
-              </div>
-              <div className="hero-proof-item">
-                <dt>30 min</dt>
-                <dd>Discovery session</dd>
-              </div>
-              <div className="hero-proof-item">
-                <dt>Senior team</dt>
-                <dd>No account-manager layer</dd>
-              </div>
-              <div className="hero-proof-item">
-                <dt>Transparent</dt>
-                <dd>Scope and pricing upfront</dd>
-              </div>
-            </dl>
-          </section>
-          </TiltedPanel>
-        </GlareHover>
-      </SectionReveal>
-
-      <SectionReveal>
-        <header className="section-intro">
-          <div className="section-intro-lead">
-            <p className="eyebrow">Intake path</p>
-            <h2>What happens after you send a brief.</h2>
-          </div>
-          <p className="section-intro-body">
-            A lightweight, transparent onboarding path. No long qualification
-            calls, no forced NDAs before we can have a useful conversation.
-          </p>
-        </header>
-      </SectionReveal>
-
-      <section className="approach-grid">
-        {intakeFlow.map((stage, idx) => (
-          <SectionReveal key={stage.step} delay={idx * 0.08} amount={0.3}>
-            <GlareHover
-              className="glare-hover--fluid"
-              borderRadius="18px"
-              glareColor="#ffffff"
-              glareOpacity={0.25}
-              glareAngle={-30}
-              glareSize={260}
-              transitionDuration={800}
-            >
-              <TiltedPanel>
-                <article className="glass approach-step">
-                  <span className="approach-step-num">{stage.step}</span>
-                  <h3>{stage.title}</h3>
-                  <p>{stage.body}</p>
-                </article>
-              </TiltedPanel>
-            </GlareHover>
-          </SectionReveal>
-        ))}
+          </Reveal>
+        </div>
       </section>
 
-      <SectionReveal>
-        <header className="section-intro">
-          <div className="section-intro-lead">
-            <p className="eyebrow">Project brief</p>
-            <h2>Share what you are trying to build.</h2>
-          </div>
-          <p className="section-intro-body">
-            A few details is enough — what the system needs to do, who will use
-            it, and any constraints you already know about.
-          </p>
-        </header>
-      </SectionReveal>
+      {/* 2 — Contact details + form */}
+      <section className="dx-section dx-section--paper">
+        <div className="dx-container">
+          <div className="ct-grid">
+            {/* Left — details */}
+            <Reveal className="ct-details">
+              <p className="dx-eyebrow">Reach the team</p>
+              <p className="dx-body ct-details-lead">
+                Your brief lands with the team that would lead the engagement —
+                no inbox triage, no account managers in between.
+              </p>
 
-      <SectionReveal>
-        <GlareHover
-          className="glare-hover--fluid"
-          borderRadius="22px"
-          glareColor="#69b5ff"
-          glareOpacity={0.3}
-          glareAngle={-30}
-          glareSize={280}
-          transitionDuration={900}
-        >
-          <InfoCard className="section-block compact" variation={1}>
-            <ContactForm />
-          </InfoCard>
-        </GlareHover>
-      </SectionReveal>
-
-      <SectionReveal>
-        <header className="section-intro">
-          <div className="section-intro-lead">
-            <p className="eyebrow">Other channels</p>
-            <h2>Reach us directly.</h2>
-          </div>
-          <p className="section-intro-body">
-            The form is the fastest path for a detailed brief, but you can also
-            reach the team through any of these.
-          </p>
-        </header>
-      </SectionReveal>
-
-      <section className="case-grid">
-        {channels.map((channel, idx) => (
-          <SectionReveal key={channel.label} delay={idx * 0.08} amount={0.3}>
-            <GlareHover
-              className="glare-hover--fluid"
-              borderRadius="22px"
-              glareColor="#69b5ff"
-              glareOpacity={0.38}
-              glareAngle={-30}
-              glareSize={300}
-              transitionDuration={800}
-            >
-              <InfoCard className="card" variation={idx}>
-                <p className="chip">{channel.label}</p>
-                <h2>{channel.title}</h2>
-                <p>{channel.body}</p>
-                <div className="card-actions">
-                  <Link href={channel.href} className="btn btn-ghost">
-                    {channel.cta}
-                  </Link>
+              <div className="ct-channels">
+                <div className="ct-channel">
+                  <span className="ct-channel-label">Email</span>
+                  <a
+                    href="mailto:contact@deepo3.com"
+                    className="dx-textlink ct-channel-value"
+                  >
+                    contact@deepo3.com
+                  </a>
                 </div>
-              </InfoCard>
-            </GlareHover>
-          </SectionReveal>
-        ))}
+
+                <div className="ct-channel">
+                  <span className="ct-channel-label">Response time</span>
+                  <span className="ct-channel-value">2 business days</span>
+                  <p className="dx-body dx-muted ct-channel-note">
+                    Average time to a practical build path, clarifying
+                    questions, and indicative scope.
+                  </p>
+                </div>
+
+                <div className="ct-channel">
+                  <span className="ct-channel-label">LinkedIn</span>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="dx-textlink ct-channel-value"
+                  >
+                    DeepO3 on LinkedIn
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Right — form */}
+            <Reveal index={1}>
+              <ContactFormNew />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 — Closing CTA */}
+      <section className="dx-section" aria-label="Prefer email">
+        <div className="dx-container dx-container--narrow ct-cta-inner">
+          <Reveal>
+            <p className="dx-eyebrow ct-cta-eyebrow">Prefer email</p>
+          </Reveal>
+          <Reveal index={1}>
+            <h2 className="dx-display ct-cta-title">
+              Reach us directly anytime.
+            </h2>
+          </Reveal>
+          <Reveal index={2}>
+            <p className="dx-lead ct-cta-lead">
+              The form is the fastest path for a detailed brief, but a plain
+              email works just as well — expect a reply inside two business
+              days.
+            </p>
+          </Reveal>
+          <Reveal index={3}>
+            <div className="ct-cta-actions">
+              <Btn href="mailto:contact@deepo3.com" external>
+                Email the Team
+              </Btn>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </div>
   );

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import InfoCard from "../../components/InfoCard";
-import GlareHover from "../../components/GlareHover";
-import TiltedPanel from "../../components/TiltedPanel";
-import SectionReveal from "../../components/SectionReveal";
-import { products } from "../../lib/products";
+import Reveal from "../../components/redesign/Reveal";
+import Btn from "../../components/redesign/Btn";
+import RevealImage from "../../components/redesign/RevealImage";
+import TiltCard from "../../components/redesign/TiltCard";
+import "./solutions.css";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -20,25 +19,46 @@ export const metadata: Metadata = {
   }
 };
 
-const solutions = [
+type Capability = {
+  tag: string;
+  title: string;
+  text: string;
+  img: string;
+  alt: string;
+};
+
+const capabilities: Capability[] = [
   {
+    tag: "RAG · LLMs · Eval",
     title: "Conversational Systems",
     text: "Task-oriented assistants with RAG pipelines, multilingual support, and retrieval from trusted institutional sources.",
-    tag: "RAG · LLMs · Eval"
+    img: "https://images.unsplash.com/photo-1774799560672-151b971fd336?auto=format&fit=crop&w=1600&q=85",
+    alt: "Conversational AI systems"
   },
   {
+    tag: "Planning · Tools · Memory",
     title: "Autonomous Multi-Agent Workflows",
     text: "Domain-specific agent systems for analysis, execution, control, and final decision support with transparent state tracking.",
-    tag: "Planning · Tools · Memory"
+    img: "https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&w=1600&q=85",
+    alt: "Autonomous multi-agent workflows"
   },
   {
+    tag: "Detection · OCR · Embeddings",
     title: "Computer Vision Intelligence",
     text: "Video and image understanding systems that classify, detect, compare, and trace digital media at scale.",
-    tag: "Detection · OCR · Embeddings"
+    img: "https://images.unsplash.com/photo-1742774101928-f7e92a471c1b?auto=format&fit=crop&w=1600&q=85",
+    alt: "Computer vision intelligence"
   }
 ];
 
-const engagementModels = [
+type EngagementModel = {
+  step: string;
+  title: string;
+  body: string;
+  featured?: boolean;
+};
+
+const engagementModels: EngagementModel[] = [
   {
     step: "Model 01",
     title: "Discovery sprint",
@@ -47,7 +67,8 @@ const engagementModels = [
   {
     step: "Model 02",
     title: "Build partnership",
-    body: "Milestone-based delivery with a dedicated senior team working alongside your product and engineering groups through launch."
+    body: "Milestone-based delivery with a dedicated senior team working alongside your product and engineering groups through launch.",
+    featured: true
   },
   {
     step: "Model 03",
@@ -56,193 +77,225 @@ const engagementModels = [
   }
 ];
 
+/* Small teal check for the PaperPilot highlights. Inline SVG, stroke = accent. */
+const Check = () => (
+  <svg
+    className="sol-check"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3 8.25 6.4 11.6 13 4.6" />
+  </svg>
+);
+
 export default function SolutionsPage() {
   return (
-    <div className="page-shell">
-      <SectionReveal>
-        <GlareHover
-          className="glare-hover--fluid"
-          borderRadius="22px"
-          glareColor="#ffffff"
-          glareOpacity={0.35}
-          glareAngle={-30}
-          glareSize={260}
-          transitionDuration={900}
-        >
-          <TiltedPanel>
-          <section className="hero glass">
-            <p className="eyebrow">Solutions</p>
-            <h1>Software engineered around real workflows.</h1>
-            <p className="lead">
+    <div className="dx-page">
+      {/* 1 — Page header (clears the fixed floating nav) */}
+      <section className="dx-section dx-pagehead">
+        <div className="dx-container">
+          <Reveal>
+            <p className="dx-eyebrow">Solutions</p>
+          </Reveal>
+          <Reveal index={1}>
+            <h1 className="dx-display sol-hero-title">
+              Software engineered around real workflows.
+            </h1>
+          </Reveal>
+          <Reveal index={2}>
+            <p className="dx-lead sol-hero-lead">
               End-to-end systems with clear outcomes: faster operations, better
               decisions, and dependable user experiences in production.
             </p>
-            <div className="hero-actions">
-              <Link href="/contact" className="btn btn-primary">
-                Scope an Engagement
-              </Link>
-              <Link href="/case-studies" className="btn btn-ghost">
+          </Reveal>
+          <Reveal index={3}>
+            <div className="sol-head-actions">
+              <Btn href="/contact">Scope an Engagement</Btn>
+              <Btn href="/case-studies" variant="white">
                 See Live Case Studies
-              </Link>
+              </Btn>
             </div>
-          </section>
-          </TiltedPanel>
-        </GlareHover>
-      </SectionReveal>
-
-      <SectionReveal>
-        <header className="section-intro">
-          <div className="section-intro-lead">
-            <p className="eyebrow">Core capabilities</p>
-            <h2>Three intersecting disciplines.</h2>
-          </div>
-          <p className="section-intro-body">
-            Every engagement combines these into a single reliable system
-            tailored to your operating context — not a generic AI prototype.
-          </p>
-        </header>
-      </SectionReveal>
-
-      <section className="case-grid">
-        {solutions.map((item, index) => (
-          <SectionReveal key={item.title} delay={index * 0.08} amount={0.3}>
-            <GlareHover
-              className="glare-hover--fluid"
-              borderRadius="22px"
-              glareColor="#69b5ff"
-              glareOpacity={0.4}
-              glareAngle={-30}
-              glareSize={300}
-              transitionDuration={800}
-            >
-              <InfoCard className="card" variation={index}>
-                <p className="chip">{item.tag}</p>
-                <h2>{item.title}</h2>
-                <p>{item.text}</p>
-              </InfoCard>
-            </GlareHover>
-          </SectionReveal>
-        ))}
+          </Reveal>
+        </div>
       </section>
 
-      <SectionReveal>
-        <header className="section-intro">
-          <div className="section-intro-lead">
-            <p className="eyebrow">Applied</p>
-            <h2>Live in our product suite.</h2>
+      {/* 2 — Core capabilities */}
+      <section className="dx-section dx-section--paper">
+        <div className="dx-container">
+          <Reveal as="header" className="dx-section-head">
+            <p className="dx-eyebrow">Core capabilities</p>
+            <h2 className="dx-h2">Three intersecting disciplines.</h2>
+            <p className="dx-body">
+              Every engagement combines these into a single reliable system
+              tailored to your operating context — not a generic AI prototype.
+            </p>
+          </Reveal>
+
+          <div className="sol-cap-grid">
+            {capabilities.map((item, i) => (
+              <Reveal key={item.title} className="sol-cap-item" index={i}>
+                <TiltCard className="sol-cap-tilt" max={5}>
+                  <article className="sol-card">
+                    <RevealImage
+                      src={item.img}
+                      alt={item.alt}
+                      aspectRatio="16 / 10"
+                      className="sol-card-media"
+                    />
+                    <div className="sol-card-body">
+                      <span className="dx-chip sol-card-chip">{item.tag}</span>
+                      <h3 className="dx-h3 sol-card-title">{item.title}</h3>
+                      <p className="dx-body sol-card-text">{item.text}</p>
+                    </div>
+                  </article>
+                </TiltCard>
+              </Reveal>
+            ))}
           </div>
-          <p className="section-intro-body">
-            The same capabilities currently power three DeepO3 products across
-            finance, municipal services, and knowledge management.
-          </p>
-        </header>
-      </SectionReveal>
-
-      <section className="case-grid">
-        {products.map((product, index) => {
-          const liveDemo = product.demos.find((demo) => demo.href);
-
-          return (
-            <SectionReveal key={product.slug} delay={index * 0.08} amount={0.3}>
-              <GlareHover
-                className="glare-hover--fluid"
-                borderRadius="22px"
-                glareColor="#69b5ff"
-                glareOpacity={0.4}
-                glareAngle={-30}
-                glareSize={300}
-                transitionDuration={800}
-              >
-                <InfoCard className="card" variation={index} accent={product.accent}>
-                  <p className="chip">{product.title}</p>
-                  <p>{product.positioning}</p>
-                  <div className="card-actions">
-                    {liveDemo?.href && (
-                      <a
-                        href={liveDemo.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary"
-                      >
-                        Try Live Demo
-                      </a>
-                    )}
-                    <Link href={`/products/${product.slug}`} className="btn btn-ghost">
-                      Read Product Profile
-                    </Link>
-                  </div>
-                </InfoCard>
-              </GlareHover>
-            </SectionReveal>
-          );
-        })}
+        </div>
       </section>
 
-      <SectionReveal>
-        <header className="section-intro">
-          <div className="section-intro-lead">
-            <p className="eyebrow">Engagement models</p>
-            <h2>How partnerships are structured.</h2>
-          </div>
-          <p className="section-intro-body">
-            Three entry points — pick what fits the stage of your initiative.
-            Scope and pricing are transparent before work begins.
-          </p>
-        </header>
-      </SectionReveal>
+      {/* 2b — Live in production: PaperPilot */}
+      <section
+        className="dx-section sol-live"
+        aria-label="PaperPilot — a solution live in production"
+      >
+        <div className="dx-container">
+          <Reveal as="header" className="dx-section-head">
+            <p className="dx-eyebrow">In production</p>
+            <h2 className="dx-h2">A solution live in the wild.</h2>
+            <p className="dx-body">
+              The same disciplines, shipped. PaperPilot is a DeepO3 product
+              already helping international students through their first months in
+              Germany — proof the approach holds up well outside the lab.
+            </p>
+          </Reveal>
 
-      <section className="approach-grid">
-        {engagementModels.map((model, idx) => (
-          <SectionReveal key={model.step} delay={idx * 0.08} amount={0.3}>
-            <GlareHover
-              className="glare-hover--fluid"
-              borderRadius="18px"
-              glareColor="#ffffff"
-              glareOpacity={0.25}
-              glareAngle={-30}
-              glareSize={260}
-              transitionDuration={800}
-            >
-              <TiltedPanel>
-                <article className="glass approach-step">
-                  <span className="approach-step-num">{model.step}</span>
-                  <h3>{model.title}</h3>
-                  <p>{model.body}</p>
-                </article>
-              </TiltedPanel>
-            </GlareHover>
-          </SectionReveal>
-        ))}
+          <div className="sol-live-row">
+            <Reveal className="sol-live-media">
+              <RevealImage
+                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
+                alt="PaperPilot — guiding newcomers through German bureaucracy"
+                aspectRatio="4 / 3"
+              />
+            </Reveal>
+
+            <div className="sol-live-text">
+              <Reveal className="sol-live-top">
+                <span className="sol-live-name">PaperPilot</span>
+                <span className="dx-chip">Live</span>
+              </Reveal>
+
+              <Reveal index={1}>
+                <p className="dx-lead sol-live-lead">
+                  Anmeldung → Tax ID → bank → residence permit. One missed step
+                  blocks the next — so PaperPilot turns Germany&apos;s post-arrival
+                  bureaucracy into a personalized, bilingual roadmap, ordered so
+                  each step unlocks the one after it.
+                </p>
+              </Reveal>
+
+              <Reveal as="ul" index={2} className="sol-live-list">
+                <li className="sol-live-feat">
+                  <Check />
+                  <span className="dx-body">
+                    Personalized 11-step plan from six short questions
+                  </span>
+                </li>
+                <li className="sol-live-feat">
+                  <Check />
+                  <span className="dx-body">
+                    Bilingual guidance with checklists, offices, and deadlines
+                  </span>
+                </li>
+                <li className="sol-live-feat">
+                  <Check />
+                  <span className="dx-body">
+                    Anonymous, account-free, and free of commissions
+                  </span>
+                </li>
+              </Reveal>
+
+              <Reveal index={3} className="sol-live-actions">
+                <Btn href="https://paper-pilot.de/" external>
+                  Open PaperPilot
+                </Btn>
+                <Btn href="/products/paperpilot" variant="white">
+                  Read the case study
+                </Btn>
+              </Reveal>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <SectionReveal>
-        <GlareHover
-          className="glare-hover--fluid"
-          borderRadius="22px"
-          glareColor="#ffffff"
-          glareOpacity={0.3}
-          glareAngle={-30}
-          glareSize={280}
-          transitionDuration={900}
-        >
-          <InfoCard className="section-block compact closing-cta" variation={2}>
-            <p className="eyebrow">Start a scope</p>
-            <h2>Need a custom architecture for your workflow?</h2>
-            <p>
+      {/* 3 — Engagement models */}
+      <section className="dx-section">
+        <div className="dx-container">
+          <Reveal as="header" className="dx-section-head dx-section-head--center">
+            <p className="dx-eyebrow">Engagement models</p>
+            <h2 className="dx-h2">How partnerships are structured.</h2>
+            <p className="dx-body">
+              Three entry points — pick what fits the stage of your initiative.
+              Scope and pricing are transparent before work begins.
+            </p>
+          </Reveal>
+
+          <div className="sol-en-grid">
+            {engagementModels.map((model, i) => (
+              <Reveal key={model.step} className="sol-en-item" index={i}>
+                <TiltCard className="sol-en-tilt" max={5}>
+                  <article
+                    className={
+                      "sol-en-card" +
+                      (model.featured ? " sol-en-card--featured" : "")
+                    }
+                  >
+                    <span className="sol-en-name">{model.step}</span>
+                    <h3 className="dx-h3 sol-en-title">{model.title}</h3>
+                    <p className="dx-body dx-muted sol-en-body">{model.body}</p>
+                  </article>
+                </TiltCard>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4 — Closing CTA */}
+      <section className="dx-section dx-section--paper" aria-label="Start a scope">
+        <div className="dx-container dx-container--narrow sol-cta-inner">
+          <Reveal>
+            <p className="dx-eyebrow sol-cta-eyebrow">Start a scope</p>
+          </Reveal>
+          <Reveal index={1}>
+            <h2 className="dx-display sol-cta-title">
+              Need a custom architecture for your workflow?
+            </h2>
+          </Reveal>
+          <Reveal index={2}>
+            <p className="dx-lead sol-cta-lead">
               We will scope your use case and produce a technical blueprint in a
               short discovery sprint — before any build work begins.
             </p>
-            <div className="card-actions">
-              <Link href="/contact" className="btn btn-primary">
-                Start Discovery
-              </Link>
-              <Link href="/case-studies" className="btn btn-ghost">
+          </Reveal>
+          <Reveal index={3}>
+            <div className="sol-cta-actions">
+              <Btn href="/contact">Start Discovery</Btn>
+              <Btn href="/case-studies" variant="white">
                 See What We Have Shipped
-              </Link>
+              </Btn>
             </div>
-          </InfoCard>
-        </GlareHover>
-      </SectionReveal>
+          </Reveal>
+        </div>
+      </section>
     </div>
   );
 }

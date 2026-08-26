@@ -91,6 +91,41 @@ export const products: Product[] = [
     ]
   },
   {
+    slug: "paperpilot",
+    title: "PaperPilot",
+    category: "Student Onboarding Assistant",
+    status: "Live",
+    accent: "#12919b",
+    summary:
+      "A step-by-step onboarding assistant that guides international students through Germany's post-arrival bureaucracy — Anmeldung, Tax ID, bank account, residence permit — in the exact order each step unlocks the next.",
+    positioning:
+      "Making the first months in a new country calm, ordered, and account-free.",
+    whyBuilt:
+      "PaperPilot was built by international students who lived the problem: in Germany one missed step blocks the next — no bank account without an Anmeldung, no residence permit without a Tax ID. We encoded that dependency chain into a personalized, bilingual roadmap generated from six short questions, with no account required and no commissions or upsells. Reviewed by the University of Konstanz International Welcome Center, it proves DeepO3 can turn a messy, high-stakes real-world process into software people actually trust.",
+    features: [
+      "Personalized 11-step roadmap generated from six short questions, ordered by real bureaucratic dependencies",
+      "Bilingual English/German guidance with document checklists, office locations, and deadline tracking",
+      "Anonymous and account-free, with honest service comparisons and no commissions or upsells"
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Dependency-ordered guidance engine",
+      "Bilingual content system",
+      "Privacy-first, no-account architecture"
+    ],
+    demos: [
+      {
+        label: "Live product",
+        href: "https://paper-pilot.de/"
+      },
+      {
+        label: "Availability",
+        note: "Public pilot (v0.1) — Konstanz, reviewed and updated each semester."
+      }
+    ]
+  },
+  {
     slug: "tradingagents",
     title: "TradingAgents",
     category: "Multi-Agent Reasoning Framework",

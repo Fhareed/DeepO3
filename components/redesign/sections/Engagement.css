@@ -1,0 +1,150 @@
+/* ============================================================
+   Engagement models — Clarify-faithful "pricing" layout, no prices.
+   Light, warm-neutral, crisp, high-whitespace, FLAT.
+   No shadows, no gradients, no blur. One accent (teal), sparing.
+   en- prefix keeps it isolated from the dx- system.
+   ============================================================ */
+
+.en-section {
+  background: var(--dx-white);
+}
+
+/* ---------- Card grid: 3 desktop, 1 mobile ---------- */
+.en-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(30px, 3.6vw, 60px);
+  align-items: stretch;
+}
+
+/* tilt wrapper fills the grid row so cards stay equal height */
+.en-item { height: 100%; }
+.en-tilt { height: 100%; }
+.en-tilt .dx-tilt__inner { display: flex; flex-direction: column; }
+.en-tilt .en-card { flex: 1; }
+
+@media (max-width: 860px) {
+  .en-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 440px;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- Card ---------- */
+.en-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r-lg);
+  padding: clamp(36px, 3.6vw, 54px);
+}
+
+/* Emphasized middle card — accent border only, still flat. */
+.en-card--featured {
+  border-color: var(--dx-accent);
+}
+
+/* Small "Most engaged" chip at the top of the featured card. */
+.en-chip {
+  align-self: flex-start;
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-accent-strong);
+  background: var(--dx-accent-pale);
+  border-radius: 999px;
+  padding: 5px 11px;
+  margin-bottom: 20px;
+}
+
+/* Tier name — small IBM Plex uppercase label above the qualifier. */
+.en-name {
+  display: block;
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+  margin-bottom: 12px;
+}
+
+/* Qualifier — replaces the price. Onest 500, medium type, ink. */
+.en-qualifier {
+  font-family: var(--dx-font);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--dx-ink);
+  margin: 0 0 24px;
+}
+
+/* Descriptor — grows so the CTA / rule / features align across cards. */
+.en-desc {
+  flex: 1 1 auto;
+  margin: 0 0 36px;
+}
+
+/* CTA row — full width; the pill stays inline, centered in the row. */
+.en-cta-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+/* Divider between the CTA and the feature list. */
+.en-rule {
+  margin: 0 0 22px;
+}
+
+/* "What's included" mini-label. */
+.en-inclabel {
+  display: block;
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+  margin-bottom: 16px;
+}
+
+/* ---------- Feature list ---------- */
+.en-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.en-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.en-check {
+  flex: none;
+  color: var(--dx-accent);
+  margin-top: 3px;
+}
+
+/* Feature text — dx-body, scoped down a touch for the list context. */
+.en-features .dx-body {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--dx-body);
+}

@@ -1,0 +1,27 @@
+.ts-strip {
+  border-top: 1px solid var(--dx-line);
+  border-bottom: 1px solid var(--dx-line);
+  background: var(--dx-bg);
+}
+.ts-kicker {
+  text-align: center;
+  margin: 0 0 clamp(20px, 3vw, 30px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dx-faint);
+}
+.ts-marquee .dx-marquee__item {
+  color: var(--dx-ink-2);
+  opacity: 0.72;
+  transition: opacity 0.3s var(--dx-ease), color 0.3s var(--dx-ease);
+}
+.ts-marquee:hover .dx-marquee__item { opacity: 0.9; }
+.ts-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dx-grad);
+  display: inline-block;
+}

@@ -1,0 +1,94 @@
+/* ============================================================
+   Products page — Clarify-faithful, light, FLAT.
+   White cards on paper, hairline borders, glowing image headers,
+   generous whitespace, teal accent used sparingly. Builds on the
+   dx- system; only pl- overrides live here. No shadows/gradients/blur.
+   ============================================================ */
+
+/* Pagehead: give the display title room; keep the lead comfortably narrow. */
+.pl-head .dx-section-head { max-width: 1040px; }
+.pl-lead { max-width: 62ch; color: var(--dx-body); }
+.pl-head-actions { margin-top: 8px; }
+
+/* Responsive grid: 3-up on wide, 2-up on mid, single column on mobile. */
+.pl-grid {
+  display: grid;
+  /* min(320px, 100%) keeps the column from ever exceeding the container on
+     very narrow phones (≤330px), while still going 3-up / 2-up when there's room. */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(30px, 3.4vw, 52px);
+}
+
+/* Tilt wrapper fills the grid row so cards stay equal height. */
+.pl-tilt { height: 100%; }
+.pl-tilt .dx-tilt__inner { display: flex; flex-direction: column; }
+.pl-item { display: flex; flex-direction: column; }
+
+/* Flat white card: hairline border, rounded, image bleeds to the top corners. */
+.pl-card {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r-lg);
+  overflow: hidden;
+}
+
+/* Image header: square its own corners so the card radius alone rounds the top. */
+.pl-media { border-radius: 0; width: 100%; }
+
+/* Content column below the image. */
+.pl-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 2.6vw, 44px);
+}
+
+/* Top row: category label left, status chip right. */
+.pl-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* IBM Plex, small uppercase, muted — the quiet product category. */
+.pl-category {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.pl-card .dx-h3 { margin-top: 18px; }
+
+/* Summary grows so the rule + footer pin to the bottom of the card. */
+.pl-summary { flex: 1; margin-top: 14px; }
+.pl-rule { margin: 22px 0; }
+
+/* Footer actions: explore link + optional live-demo button. */
+.pl-footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pl-explore svg { width: 15px; height: 15px; }
+
+/* Closing CTA — centered, generous. */
+.pl-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+.pl-cta-lead { max-width: 54ch; color: var(--dx-body); }
+.pl-cta-actions { margin-top: 10px; }

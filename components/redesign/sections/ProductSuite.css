@@ -1,0 +1,89 @@
+/* ============================================================
+   Product Suite section — Clarify-faithful, light, FLAT.
+   White cards on paper, hairline borders, generous whitespace,
+   teal accent used sparingly. Uses the dx- design system;
+   only ps- overrides live here. No shadows / gradients / blur.
+   ============================================================ */
+
+/* 3-up on desktop, single column on mobile. */
+.ps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(30px, 3.6vw, 56px);
+}
+
+/* tilt wrapper fills the grid row so cards stay equal height */
+.ps-tilt { height: 100%; }
+.ps-tilt .dx-tilt__inner { display: flex; flex-direction: column; }
+
+/* Each grid cell is a flex column so the card fills the row height,
+   keeping footers aligned across cards of unequal copy length. */
+.ps-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flat white card: crisp hairline border, rounded corners, no shadow. */
+.ps-card {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--dx-white);
+  border: 1px solid var(--dx-line-2);
+  border-radius: var(--dx-r-lg);
+  padding: clamp(36px, 3.6vw, 54px);
+}
+
+/* Top row: category label left, status chip right. */
+.ps-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* IBM Plex, small uppercase, muted — the quiet product category. */
+.ps-category {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ps-card .dx-h3 {
+  margin-top: 18px;
+}
+
+/* Summary grows so the rule + footer pin to the bottom of the card. */
+.ps-summary {
+  flex: 1;
+  margin-top: 14px;
+}
+
+.ps-rule {
+  margin: 22px 0;
+}
+
+/* Footer actions: explore link + optional live-demo button. */
+.ps-footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ps-explore svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 860px) {
+  .ps-grid {
+    grid-template-columns: 1fr;
+  }
+}

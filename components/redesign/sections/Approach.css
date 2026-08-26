@@ -1,0 +1,110 @@
+/* ============================================================
+   DeepO3 — Approach ("Our approach")
+   Clarify-faithful: light warm-neutral paper, crisp, high
+   whitespace, FLAT (no shadows / gradients / blur). Large tight
+   type, teal accent used sparingly. ap- prefix keeps it isolated.
+   ============================================================ */
+
+/* -------- Part 1: two-column intro -------- */
+.ap-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+.ap-intro__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(18px, 1.8vw, 26px);
+}
+
+/* Uppercase kicker line — IBM Plex, teal, wide tracking */
+.ap-kicker {
+  font-family: var(--dx-font-label);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dx-accent);
+  margin-top: -4px;
+}
+
+.ap-intro__text .dx-h2 {
+  max-width: 15ch;
+}
+
+.ap-lead {
+  max-width: 42ch;
+  color: var(--dx-body);
+}
+
+.ap-intro__media {
+  width: 100%;
+}
+
+/* -------- Part 2: four-step process -------- */
+.ap-steps {
+  list-style: none;
+  margin: clamp(56px, 7vw, 96px) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(28px, 3vw, 48px);
+}
+
+.ap-step {
+  border-top: 1px solid var(--dx-line-2);
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ap-step__num {
+  font-family: var(--dx-font);
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--dx-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.ap-step__title {
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.ap-step__body {
+  color: var(--dx-muted);
+  max-width: 34ch;
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 1000px) {
+  .ap-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(32px, 5vw, 48px);
+  }
+}
+
+@media (max-width: 760px) {
+  .ap-intro {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 8vw, 48px);
+  }
+  .ap-intro__text .dx-h2 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .ap-steps {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+}
