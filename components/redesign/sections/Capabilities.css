@@ -158,9 +158,27 @@
   .cap-sublabel {
     padding-top: 0;
   }
+  /* Tighter row so the big title + thumbnail + "+" all fit a phone width,
+     and the title can never overflow into the toggle. */
+  .cap-header {
+    gap: 16px;
+    align-items: flex-start;
+    padding: clamp(22px, 5.5vw, 40px) 0;
+  }
   .cap-thumb {
-    width: 56px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
+    margin-top: 4px;
+  }
+  .cap-title {
+    font-size: clamp(24px, 7.4vw, 44px);
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere; /* last-resort guard: never collide with the "+" */
+  }
+  .cap-toggle {
+    width: 24px;
+    height: 24px;
+    margin-top: 4px;
   }
 }
 
