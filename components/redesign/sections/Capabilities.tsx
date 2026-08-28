@@ -53,7 +53,8 @@ const PlusIcon = () => (
 );
 
 export default function Capabilities() {
-  const [openIndex, setOpenIndex] = useState<number>(0);
+  // -1 = all rows collapsed on load/reload (nothing is forced open).
+  const [openIndex, setOpenIndex] = useState<number>(-1);
 
   return (
     <section className="dx-section cap-section">
