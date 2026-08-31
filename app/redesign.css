@@ -108,25 +108,46 @@ body.dx-home .site-bottom-gradual-blur { display: none !important; }
 }
 .dx-page ::selection { background: var(--dx-accent-pale); }
 
-/* ---------- Floating nav: frosted bar on scroll ----------
-   The nav is a fixed, transparent bar; without a background, content scrolls
-   under it and clashes with the logo / Menu button. Once the page is scrolled
-   (body.dx-nav-solid, set in LegacyChrome), the header gains a frosted-glass
-   background + hairline so content passes cleanly beneath it. It stays fully
-   transparent at the very top, and never shows while the overlay menu is open
-   (the wrapper carries [data-open] then). */
-.site-staggered-menu .staggered-menu-header {
-  border-bottom: 1px solid transparent;
-  transition: background-color 0.32s var(--dx-ease-hover),
-    backdrop-filter 0.32s var(--dx-ease-hover),
-    border-color 0.32s var(--dx-ease-hover), box-shadow 0.32s var(--dx-ease-hover);
+/* ---------- Liquid-glass floating nav ----------
+   The header stays fully transparent — no full-width bar, no divider — so the
+   page keeps one continuous, immersive surface. Instead the logo and the Menu
+   button sit in floating "liquid glass" lozenges that refract and blur only the
+   content directly behind them. Nothing clashes, and the flow is never cut.
+   The glass materialises once the page is scrolled (clean over the hero at the
+   very top) and is suppressed while the overlay menu is open ([data-open]). */
+.dx-glass,
+.site-staggered-menu .sm-logo,
+.site-staggered-menu .sm-toggle {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background-color 0.4s var(--dx-ease-hover),
+    backdrop-filter 0.4s var(--dx-ease-hover),
+    border-color 0.4s var(--dx-ease-hover), box-shadow 0.4s var(--dx-ease-hover);
 }
-body.dx-nav-solid .site-staggered-menu:not([data-open]) .staggered-menu-header {
-  background: rgba(245, 244, 243, 0.82);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
-  backdrop-filter: saturate(180%) blur(14px);
-  border-bottom-color: var(--dx-line-2);
-  box-shadow: 0 1px 20px rgba(42, 41, 40, 0.05);
+
+/* Give the nav controls room to become pills without shifting off the edge. */
+.site-staggered-menu .sm-logo {
+  padding: 0.44em 0.8em;
+  margin-left: -0.8em;
+}
+.site-staggered-menu .sm-toggle {
+  padding: 0.5em 0.9em;
+  margin-right: -0.4em;
+}
+
+/* The liquid-glass material itself: translucent fill, strong background blur +
+   saturation (the "refraction"), a bright specular rim, a soft top-edge gloss
+   (inset highlight) and a gentle drop shadow so it reads as floating glass. */
+.dx-glass--on,
+body.dx-nav-solid .site-staggered-menu:not([data-open]) .sm-logo,
+body.dx-nav-solid .site-staggered-menu:not([data-open]) .sm-toggle {
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: saturate(200%) blur(18px);
+  backdrop-filter: saturate(200%) blur(18px);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.35), 0 10px 26px rgba(42, 41, 40, 0.12),
+    0 2px 6px rgba(42, 41, 40, 0.07);
 }
 
 /* ---------- Responsive safety net ----------
