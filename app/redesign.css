@@ -108,6 +108,27 @@ body.dx-home .site-bottom-gradual-blur { display: none !important; }
 }
 .dx-page ::selection { background: var(--dx-accent-pale); }
 
+/* ---------- Floating nav: frosted bar on scroll ----------
+   The nav is a fixed, transparent bar; without a background, content scrolls
+   under it and clashes with the logo / Menu button. Once the page is scrolled
+   (body.dx-nav-solid, set in LegacyChrome), the header gains a frosted-glass
+   background + hairline so content passes cleanly beneath it. It stays fully
+   transparent at the very top, and never shows while the overlay menu is open
+   (the wrapper carries [data-open] then). */
+.site-staggered-menu .staggered-menu-header {
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.32s var(--dx-ease-hover),
+    backdrop-filter 0.32s var(--dx-ease-hover),
+    border-color 0.32s var(--dx-ease-hover), box-shadow 0.32s var(--dx-ease-hover);
+}
+body.dx-nav-solid .site-staggered-menu:not([data-open]) .staggered-menu-header {
+  background: rgba(245, 244, 243, 0.82);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom-color: var(--dx-line-2);
+  box-shadow: 0 1px 20px rgba(42, 41, 40, 0.05);
+}
+
 /* ---------- Responsive safety net ----------
    .dx-page already clips horizontal overflow; make sure long words, emails,
    and URLs WRAP (rather than get clipped) and media never exceeds its column. */

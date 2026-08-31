@@ -28,7 +28,21 @@ const socialItems = [
 export default function LegacyChrome({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     document.body.classList.add("dx-home");
-    return () => document.body.classList.remove("dx-home");
+
+    // Give the floating nav a frosted background once the page is scrolled,
+    // so body text never clashes with the logo / Menu button. Stays clean at
+    // the very top of the page.
+    const onScroll = () => {
+      document.body.classList.toggle("dx-nav-solid", window.scrollY > 20);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      document.body.classList.remove("dx-home");
+      document.body.classList.remove("dx-nav-solid");
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
