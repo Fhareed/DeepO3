@@ -1,0 +1,315 @@
+/* ============================================================
+   About — Founder page. Dark hero + light engagement rows.
+   Uses the dx- design system; ab- prefix keeps page-local
+   styles isolated. No shadows, no gradients, flat and editorial.
+   ============================================================ */
+
+/* ---------- Hero ---------- */
+.ab-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: end;
+}
+
+.ab-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ab-hero__name {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.ab-hero__role {
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dx-accent);
+}
+
+.ab-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ab-hero__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ab-hero__meta li + li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--dx-accent);
+  display: inline-block;
+  margin-right: 14px;
+}
+
+.ab-hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: clamp(20px, 2.4vw, 36px);
+  border-left: 1px solid var(--dx-line-2);
+}
+
+.ab-hero__asideLabel {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ab-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+/* ---------- Capability chips ---------- */
+.ab-caps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---------- Section head helper ---------- */
+.ab-sec-head {
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+/* ---------- Featured engagement (big) ---------- */
+.ab-feature {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(40px, 5vw, 84px);
+  align-items: center;
+}
+
+.ab-feature__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ab-feature__top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.ab-feature__role {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ab-feature__partners {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ab-feature__outcome {
+  padding-top: clamp(16px, 1.8vw, 22px);
+  border-top: 1px solid var(--dx-line-2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ab-feature__outcomeLabel {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ab-feature__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+/* ---------- Experience list ---------- */
+.ab-exp {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ab-exp__row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: clamp(20px, 3vw, 44px);
+  align-items: baseline;
+  padding: clamp(22px, 2.6vw, 32px) 0;
+  border-top: 1px solid var(--dx-line-2);
+}
+
+.ab-exp__row:last-child {
+  border-bottom: 1px solid var(--dx-line-2);
+}
+
+.ab-exp__period {
+  font-family: var(--dx-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-muted);
+}
+
+.ab-exp__title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ab-exp__company {
+  font-family: var(--dx-font);
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 500;
+  color: var(--dx-ink);
+  letter-spacing: -0.02em;
+}
+
+.ab-exp__role {
+  font-size: 0.95rem;
+  color: var(--dx-body);
+}
+
+.ab-exp__tag {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-accent);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---------- Education grid ---------- */
+.ab-edu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 3.6vw, 56px);
+}
+
+.ab-edu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: clamp(18px, 2vw, 24px);
+  border-top: 1px solid var(--dx-line-2);
+}
+
+.ab-edu__period {
+  font-family: var(--dx-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dx-accent-strong);
+}
+
+.ab-edu__school {
+  font-family: var(--dx-font);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--dx-ink);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ab-edu__degree {
+  font-size: 0.95rem;
+  color: var(--dx-body);
+  line-height: 1.45;
+}
+
+/* ---------- Closing CTA ---------- */
+.ab-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+}
+.ab-cta-lead {
+  color: var(--dx-body);
+  max-width: 56ch;
+}
+.ab-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .ab-hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .ab-hero__aside {
+    border-left: 0;
+    border-top: 1px solid var(--dx-line-2);
+    padding-left: 0;
+    padding-top: 28px;
+  }
+  .ab-feature {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 40px);
+  }
+  .ab-edu-grid {
+    grid-template-columns: 1fr;
+  }
+  .ab-exp__row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .ab-exp__tag {
+    text-align: left;
+  }
+}

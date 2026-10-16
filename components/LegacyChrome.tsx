@@ -10,6 +10,7 @@ const menuItems = [
   { label: "Products", ariaLabel: "View the product suite", link: "/products" },
   { label: "Solutions", ariaLabel: "View solutions", link: "/solutions" },
   { label: "Case Studies", ariaLabel: "Read case studies", link: "/case-studies" },
+  { label: "About", ariaLabel: "About the founder", link: "/about" },
   { label: "Contact", ariaLabel: "Get in touch", link: "/contact" }
 ];
 

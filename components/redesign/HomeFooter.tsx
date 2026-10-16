@@ -11,6 +11,7 @@ const exploreLinks: FooterLink[] = [
   { label: "Products", href: "/products" },
   { label: "Solutions", href: "/solutions" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];
 

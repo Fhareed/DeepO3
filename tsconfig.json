@@ -31,6 +31,7 @@
   ],
   "exclude": [
     "node_modules",
-    "_reference"
+    "_reference",
+    "_CLEANUP_DELETE_ME"
   ]
 }
