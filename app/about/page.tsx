@@ -7,19 +7,19 @@ import "./about.css";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Farid Oladega — Senior Full Stack & AI Engineer and founder of DeepO3. Selected client work, education, and background building intelligent systems with SMEs and research institutions.",
+    "About DeepO3, an AI-native software studio founded by Farid Oladega. Selected client and research-institution collaborations across Finland and Germany.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Farid Oladega | DeepO3",
+    title: "About DeepO3",
     description:
-      "Senior Full Stack & AI Engineer and founder of DeepO3. Selected client work with Finnish SMEs, Nigerian businesses, and research institutions.",
+      "An AI-native software studio founded by Farid Oladega. Selected collaborations with SMEs and research institutions across the EU.",
     url: "/about",
-    type: "profile"
+    type: "website"
   }
 };
 
-/* Short capability chips rendered under the hero. Reads as a one-line
-   positioning statement — what Farid actually ships. */
+/* Short capability chips rendered under the hero. One-line positioning
+   for what the studio actually ships. */
 const capabilities = [
   "Full-stack engineering",
   "LLM & multi-agent systems",
@@ -28,70 +28,99 @@ const capabilities = [
   "MLOps & observability"
 ];
 
-/* Selected client engagements. Keep this list honest and expandable —
-   each new engagement slots in as another entry below AVEO AI. */
-const featuredEngagement = {
-  company: "AVEO AI",
-  location: "Vaasa, Finland",
-  context:
-    "A Finnish SME building AI learning solutions for primary industries.",
-  partners: ["University of Vaasa", "Pohjanmaan Yrityskummit"],
-  summary:
-    "Designed and prototyped a gamified learning platform — a Duolingo-style app that teaches farmers how to use AI tools in their day-to-day agricultural work. The brief was to take complex, structured AI training material and present it in a format that non-technical users could actually finish and enjoy.",
-  role: "Student engineer, Flipped Mentorship pilot",
-  team: ["Ataur", "Surekha", "Farid", "Trang", "Ashma", "Binita"],
-  outcome:
-    "The pilot was well-received by AVEO AI's leadership. On the back of the prototype, AVEO AI proposed taking the platform forward with the Finnish government as a benefit for farmers after they pay their union dues — expanding the reach from a single company to a national cohort.",
-  image: "/about/aveo-ai-vaasa.jpg",
-  imageAlt:
-    "Group of students at the University of Vaasa game hall during the Flipped Mentorship programme with AVEO AI.",
-  articleHref:
-    "https://www.uwasa.fi/en/newshub/news/students-developing-gamified-learning-solution-flipped-mentorship-programme-engaged"
-};
+/* Selected engagements. Add new rows below as collaborations ship. */
+const engagements = [
+  {
+    company: "AVEO AI",
+    location: "Vaasa, Finland",
+    status: "Shipped",
+    headline: "Gamified AI-literacy app for Finnish farmers.",
+    role: "Flipped Mentorship pilot, University of Vaasa",
+    partners: ["University of Vaasa", "Pohjanmaan Yrityskummit (Suomen Yrityskummit)"],
+    context:
+      "A Finnish SME building AI learning solutions for primary industries.",
+    summary:
+      "DeepO3 collaborated with AVEO AI to design and prototype a gamified learning platform, a Duolingo-style app that teaches farmers how to use AI tools in their day-to-day agricultural work. The brief was to take complex, structured AI training material and present it in a format that non-technical users could actually finish and enjoy.",
+    outcome:
+      "The pilot was well-received by AVEO AI's leadership. On the back of the prototype, AVEO AI proposed taking the platform forward with the Finnish government as a benefit for farmers after they pay their union dues, expanding the reach from a single company to a national cohort.",
+    image: "/about/aveo-ai-vaasa.jpg",
+    imageAlt:
+      "Group of students at the University of Vaasa game hall during the Flipped Mentorship programme with AVEO AI.",
+    ctaLabel: "Read the University of Vaasa write-up",
+    ctaHref:
+      "https://www.uwasa.fi/en/newshub/news/students-developing-gamified-learning-solution-flipped-mentorship-programme-engaged",
+    reverse: false
+  },
+  {
+    company: "PaperPilot",
+    location: "Konstanz, Germany",
+    status: "Live and growing",
+    headline:
+      "Guided onboarding for international students arriving in Germany.",
+    role: "DeepO3 product, developed with academic partners",
+    partners: [
+      "University of Konstanz (International Welcome Center)",
+      "HTWG Konstanz"
+    ],
+    context:
+      "A dependency-ordered roadmap through Germany's post-arrival bureaucracy: Anmeldung, Tax ID, bank account, residence permit, each step unlocked in the exact order it is reachable in real life.",
+    summary:
+      "DeepO3 built PaperPilot alongside the University of Konstanz International Welcome Center and HTWG Konstanz. From six short questions the system generates a personalised, bilingual eleven-step roadmap with document checklists, office locations and deadline tracking, no account required, no ads, no commissions. The content is validated by an eleven-student survey carried out at Konstanz in May 2026 and reviewed by the Welcome Center every semester.",
+    outcome:
+      "PaperPilot is live at paper-pilot.de and in active use by international students arriving in Konstanz. New features and content ship continuously as users report edge cases and new workflows appear, with Phase 2 reminders already in development. The ongoing partnership with University of Konstanz and HTWG keeps the roadmap aligned with how the institutions and the city actually operate.",
+    image: "/about/paperpilot-konstanz.jpg",
+    imageAlt:
+      "PaperPilot onboarding assistant guiding international students through German bureaucracy.",
+    ctaLabel: "Open PaperPilot",
+    ctaHref: "https://paper-pilot.de/",
+    reverse: true
+  }
+];
 
-/* Professional experience strip. Pulled from the live CV, condensed to
-   the signal companies actually read. */
+/* Professional background behind the studio. Pulled from the live CV,
+   condensed to the companies that recruiters actually read. */
 const experience = [
   {
     period: "Mar 2026 – Present",
     company: "Kay-Solak Nig. Ventures",
-    role: "Software / AI Engineer — Remote, Nigeria",
+    role: "Software / AI Engineer, Remote, Nigeria",
     tag: "AI + Platform"
   },
   {
     period: "Apr 2022 – Dec 2025",
     company: "STX Next",
-    role: "Software Engineer — Remote",
+    role: "Software Engineer, Remote",
     tag: "AI Automation"
   },
   {
     period: "Jan 2019 – Apr 2022",
     company: "Kay-Solak Nig. Ventures",
-    role: "Full Stack Engineer — Remote, Nigeria",
+    role: "Full Stack Engineer, Remote, Nigeria",
     tag: "Cloud Migration"
   },
   {
     period: "Jan 2014 – Oct 2018",
     company: "Aveolabs",
-    role: "Full Stack Engineer — Remote, Nigeria",
+    role: "Full Stack Engineer, Remote, Nigeria",
     tag: "Analytics"
   }
 ];
 
-/* Education. Masters stacked across three European universities. */
+/* Education. Three Masters programmes across Germany and Finland, all
+   completed. */
 const education = [
   {
-    period: "Completing Mar 2026",
+    period: "Completed Mar 2026",
     school: "University of Konstanz",
     degree: "M.Sc. Computer Science"
   },
   {
-    period: "Sept 2024 – Aug 2026",
+    period: "Completed Aug 2026",
     school: "University of Vaasa",
     degree: "M.Sc. Sustainable and Autonomous Systems"
   },
   {
-    period: "Sept 2024 – Aug 2026",
+    period: "Completed Aug 2026",
     school: "University of Oulu",
     degree: "M.Sc. Sustainable and Autonomous Systems"
   }
@@ -100,7 +129,7 @@ const education = [
 export default function AboutPage() {
   return (
     <div className="dx-page">
-      {/* (1) Hero — name, role, positioning. */}
+      {/* (1) Hero — who we are, what we do. */}
       <section className="dx-section dx-pagehead">
         <div className="dx-container">
           <Reveal>
@@ -110,43 +139,44 @@ export default function AboutPage() {
           <div className="ab-hero">
             <div className="ab-hero__text">
               <Reveal index={1}>
-                <h1 className="dx-display ab-hero__name">Farid Oladega</h1>
+                <h1 className="dx-display ab-hero__name">
+                  An AI-native software studio, built on real collaborations.
+                </h1>
               </Reveal>
 
               <Reveal index={2}>
                 <p className="ab-hero__role">
-                  Senior Full Stack &amp; AI Engineer · Founder, DeepO3
+                  DeepO3 · Founded by Farid Oladega
                 </p>
               </Reveal>
 
               <Reveal index={3}>
                 <p className="dx-lead">
-                  I build AI-native software for firms and organisations that
-                  need the tools to actually hold up in production — intelligent
-                  automation, LLM and multi-agent systems, and the cloud-native
-                  plumbing that makes them reliable. DeepO3 is where that work
-                  lives today; the engagements below are the ones that got me
-                  here.
+                  DeepO3 builds AI-native software for firms, research
+                  institutions and public-sector teams, intelligent automation,
+                  LLM and multi-agent systems, and the cloud-native plumbing
+                  that keeps them reliable in production. The partnerships
+                  below are where our work shows up today.
                 </p>
               </Reveal>
 
               <Reveal index={4}>
-                <ul className="ab-hero__meta" aria-label="Current base and focus">
+                <ul className="ab-hero__meta" aria-label="Where DeepO3 works">
                   <li>Based in Konstanz, Germany</li>
-                  <li>Working across the EU &amp; West Africa</li>
+                  <li>Collaborations across the EU &amp; West Africa</li>
                 </ul>
               </Reveal>
 
               <Reveal index={5} className="ab-hero__actions">
                 <Btn href="/contact">Start a conversation</Btn>
                 <Btn href="/case-studies" variant="white">
-                  See DeepO3 case studies
+                  See product case studies
                 </Btn>
               </Reveal>
             </div>
 
             <Reveal index={2} className="ab-hero__aside">
-              <span className="ab-hero__asideLabel">What I ship</span>
+              <span className="ab-hero__asideLabel">What we ship</span>
               <ul className="ab-caps" aria-label="Capabilities">
                 {capabilities.map((cap) => (
                   <li key={cap} className="dx-chip">
@@ -159,93 +189,109 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* (2) Featured engagement — AVEO AI × University of Vaasa. */}
+      {/* (2) Engagements — AVEO AI then PaperPilot. */}
       <section className="dx-section dx-section--paper">
         <div className="dx-container">
           <Reveal as="header" className="dx-section-head ab-sec-head">
-            <p className="dx-eyebrow">Selected client work</p>
+            <p className="dx-eyebrow">Selected collaborations</p>
             <h2 className="dx-h2">
-              Where theory meets real companies with real users.
+              Partnerships with companies, universities and the people who use
+              the result.
             </h2>
             <p className="dx-body">
-              Each engagement below is a system I helped design and ship for
-              someone operating outside the lab. These are the briefs that
-              shaped how DeepO3 approaches work today.
+              Each collaboration below pairs DeepO3 with an operating partner
+              and, where relevant, a research institution. The common thread
+              is live users and continuous delivery, not pilots that sit on a
+              shelf.
             </p>
           </Reveal>
 
-          <div className="ab-feature">
-            <Reveal>
-              <RevealImage
-                src={featuredEngagement.image}
-                alt={featuredEngagement.imageAlt}
-                aspectRatio="16 / 10"
-              />
-            </Reveal>
+          <div className="ab-engagements">
+            {engagements.map((eng, idx) => (
+              <article
+                key={eng.company}
+                className={`ab-feature${eng.reverse ? " ab-feature--reverse" : ""}`}
+                aria-labelledby={`eng-${eng.company.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                <Reveal className="ab-feature__media">
+                  <RevealImage
+                    src={eng.image}
+                    alt={eng.imageAlt}
+                    aspectRatio="16 / 10"
+                  />
+                </Reveal>
 
-            <div className="ab-feature__text">
-              <Reveal>
-                <div className="ab-feature__top">
-                  <span className="dx-chip">{featuredEngagement.company}</span>
-                  <span className="dx-chip">{featuredEngagement.location}</span>
-                  <span className="dx-chip">Shipped</span>
+                <div className="ab-feature__text">
+                  <Reveal>
+                    <div className="ab-feature__top">
+                      <span className="dx-chip">{eng.company}</span>
+                      <span className="dx-chip">{eng.location}</span>
+                      <span className="dx-chip">{eng.status}</span>
+                    </div>
+                  </Reveal>
+
+                  <Reveal index={1}>
+                    <h3
+                      className="dx-h3"
+                      id={`eng-${eng.company.toLowerCase().replace(/\s+/g, "-")}`}
+                    >
+                      {eng.headline}
+                    </h3>
+                  </Reveal>
+
+                  <Reveal index={2}>
+                    <p className="ab-feature__role">
+                      {eng.role} · With {eng.partners.join(" and ")}
+                    </p>
+                  </Reveal>
+
+                  <Reveal index={3}>
+                    <p className="dx-body">{eng.summary}</p>
+                  </Reveal>
+
+                  <Reveal index={4}>
+                    <p className="dx-body">
+                      <span className="dx-muted">About the partner, </span>
+                      {eng.context}
+                    </p>
+                  </Reveal>
+
+                  <Reveal index={5} className="ab-feature__outcome">
+                    <span className="ab-feature__outcomeLabel">
+                      {idx === 0 ? "Outcome" : "Today"}
+                    </span>
+                    <p className="dx-body">{eng.outcome}</p>
+                  </Reveal>
+
+                  <Reveal index={6} className="ab-feature__actions">
+                    <Btn href={eng.ctaHref} external>
+                      {eng.ctaLabel}
+                    </Btn>
+                  </Reveal>
                 </div>
-              </Reveal>
-
-              <Reveal index={1}>
-                <h3 className="dx-h3">
-                  Gamified AI-literacy app for Finnish farmers.
-                </h3>
-              </Reveal>
-
-              <Reveal index={2}>
-                <p className="ab-feature__role">
-                  {featuredEngagement.role} · In collaboration with{" "}
-                  {featuredEngagement.partners.join(" and ")}
-                </p>
-              </Reveal>
-
-              <Reveal index={3}>
-                <p className="dx-body">{featuredEngagement.summary}</p>
-              </Reveal>
-
-              <Reveal index={4}>
-                <p className="dx-body">
-                  <span className="dx-muted">About the client — </span>
-                  {featuredEngagement.context}
-                </p>
-              </Reveal>
-
-              <Reveal index={5} className="ab-feature__outcome">
-                <span className="ab-feature__outcomeLabel">Outcome</span>
-                <p className="dx-body">{featuredEngagement.outcome}</p>
-              </Reveal>
-
-              <Reveal index={6} className="ab-feature__actions">
-                <Btn href={featuredEngagement.articleHref} external>
-                  Read the University of Vaasa write-up
-                </Btn>
-              </Reveal>
-            </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* (3) Professional background. */}
+      {/* (3) Founder background. */}
       <section className="dx-section">
         <div className="dx-container">
           <Reveal as="header" className="dx-section-head ab-sec-head">
-            <p className="dx-eyebrow">Background</p>
-            <h2 className="dx-h2">A decade of shipping production systems.</h2>
+            <p className="dx-eyebrow">Founder background</p>
+            <h2 className="dx-h2">
+              Ten years of production systems behind the studio.
+            </h2>
             <p className="dx-body">
-              Before DeepO3, I spent ten years building and operating the kind
-              of infrastructure that AI products eventually run on — intake
-              pipelines, event-driven backends, API gateways, and MLOps for
-              teams that could not afford downtime.
+              DeepO3 is led by Farid Oladega, who spent a decade building and
+              operating the kind of infrastructure that AI products eventually
+              run on, intake pipelines, event-driven backends, API gateways
+              and MLOps for teams that could not afford downtime.
             </p>
           </Reveal>
 
-          <ol className="ab-exp" aria-label="Professional experience">
+          <ol className="ab-exp" aria-label="Founder professional experience">
             {experience.map((entry, i) => (
               <Reveal
                 as="li"
@@ -270,10 +316,12 @@ export default function AboutPage() {
         <div className="dx-container">
           <Reveal as="header" className="dx-section-head ab-sec-head">
             <p className="dx-eyebrow">Education</p>
-            <h2 className="dx-h2">Studied where sustainability meets systems.</h2>
+            <h2 className="dx-h2">
+              Studied where sustainability meets systems.
+            </h2>
             <p className="dx-body">
-              Three Masters programmes across Germany and Finland, each
-              anchored in autonomous systems and computer science — the
+              Three completed Masters programmes across Germany and Finland,
+              each anchored in autonomous systems and computer science, the
               foundation DeepO3 is built on.
             </p>
           </Reveal>
@@ -291,14 +339,11 @@ export default function AboutPage() {
       </section>
 
       {/* (5) Closing CTA. */}
-      <section
-        className="dx-section"
-        aria-label="Start an engagement"
-      >
+      <section className="dx-section" aria-label="Start an engagement">
         <div className="dx-container dx-container--narrow ab-cta-inner">
           <Reveal>
             <p className="dx-eyebrow" style={{ justifyContent: "center" }}>
-              Work with me
+              Work with DeepO3
             </p>
           </Reveal>
           <Reveal index={1}>
@@ -308,9 +353,9 @@ export default function AboutPage() {
           </Reveal>
           <Reveal index={2}>
             <p className="dx-lead ab-cta-lead">
-              Tell me what you&apos;re trying to build. I&apos;ll come back
-              with a practical delivery path within two business days — no
-              sales deck, no account manager layer.
+              Tell us what you&apos;re trying to build. We come back with a
+              practical delivery path within two business days, no sales deck,
+              no account-manager layer.
             </p>
           </Reveal>
           <Reveal index={3}>

@@ -102,12 +102,32 @@
   margin-bottom: clamp(40px, 5vw, 72px);
 }
 
+/* ---------- Engagement list wrapper ---------- */
+.ab-engagements {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(72px, 10vw, 132px);
+}
+
 /* ---------- Featured engagement (big) ---------- */
 .ab-feature {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: clamp(40px, 5vw, 84px);
   align-items: center;
+}
+
+/* Alternating row: image on the right. DOM order is media-first, so we
+   flip orders on desktop and reset on the mobile stack. */
+.ab-feature--reverse .ab-feature__media {
+  order: 2;
+}
+.ab-feature--reverse .ab-feature__text {
+  order: 1;
+}
+
+.ab-feature__media {
+  width: 100%;
 }
 
 .ab-feature__text {
@@ -301,6 +321,10 @@
   .ab-feature {
     grid-template-columns: 1fr;
     gap: clamp(28px, 6vw, 40px);
+  }
+  .ab-feature--reverse .ab-feature__media,
+  .ab-feature--reverse .ab-feature__text {
+    order: 0;
   }
   .ab-edu-grid {
     grid-template-columns: 1fr;
