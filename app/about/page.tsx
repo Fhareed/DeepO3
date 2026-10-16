@@ -280,55 +280,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* (3) Founder background. */}
+      {/* (3) Before DeepO3 — founder's prior collaborations, e.g. AVEO AI.
+          Promoted up here (immediately after DeepO3 collaborations) because
+          this engagement is a major credibility signal and should not sit
+          below the CV. */}
       <section className="dx-section">
         <div className="dx-container">
           <Reveal as="header" className="dx-section-head ab-sec-head">
-            <p className="dx-eyebrow">Founder background</p>
+            <p className="dx-eyebrow">Prior work · Before DeepO3</p>
             <h2 className="dx-h2">
-              Ten years of production systems behind the studio.
+              Already shipping with Finnish SMEs and research institutions.
             </h2>
             <p className="dx-body">
-              DeepO3 is led by Farid Oladega, who spent a decade building and
-              operating the kind of infrastructure that AI products eventually
-              run on, intake pipelines, event-driven backends, API gateways
-              and MLOps for teams that could not afford downtime.
-            </p>
-          </Reveal>
-
-          <ol className="ab-exp" aria-label="Founder professional experience">
-            {experience.map((entry, i) => (
-              <Reveal
-                as="li"
-                key={`${entry.company}-${entry.period}`}
-                className="ab-exp__row"
-                index={i}
-              >
-                <span className="ab-exp__period">{entry.period}</span>
-                <span className="ab-exp__title">
-                  <span className="ab-exp__company">{entry.company}</span>
-                  <span className="ab-exp__role">{entry.role}</span>
-                </span>
-                <span className="ab-exp__tag">{entry.tag}</span>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* (4) Before DeepO3 — founder's prior collaborations, e.g. AVEO AI. */}
-      <section className="dx-section dx-section--paper">
-        <div className="dx-container">
-          <Reveal as="header" className="dx-section-head ab-sec-head">
-            <p className="dx-eyebrow">Before DeepO3</p>
-            <h2 className="dx-h2">
-              Earlier collaborations that shaped how the studio works.
-            </h2>
-            <p className="dx-body">
-              Projects the founder shipped before DeepO3 formed, carried out
-              with Finnish SMEs and university partners. They are the proof of
-              approach the studio was built on: partner closely, prototype
-              fast, and hand over something people can keep running.
+              Before the studio formed, the founder was already running real
+              engagements with Finnish companies through the University of
+              Vaasa. The project below is the one that proved the model
+              DeepO3 is built on: partner closely with an operating team,
+              prototype fast, and hand over something the client takes
+              further than the brief.
             </p>
           </Reveal>
 
@@ -396,6 +365,42 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* (4) Founder background. */}
+      <section className="dx-section dx-section--paper">
+        <div className="dx-container">
+          <Reveal as="header" className="dx-section-head ab-sec-head">
+            <p className="dx-eyebrow">Founder background</p>
+            <h2 className="dx-h2">
+              Ten years of production systems behind the studio.
+            </h2>
+            <p className="dx-body">
+              DeepO3 is led by Farid Oladega, who spent a decade building and
+              operating the kind of infrastructure that AI products eventually
+              run on, intake pipelines, event-driven backends, API gateways
+              and MLOps for teams that could not afford downtime.
+            </p>
+          </Reveal>
+
+          <ol className="ab-exp" aria-label="Founder professional experience">
+            {experience.map((entry, i) => (
+              <Reveal
+                as="li"
+                key={`${entry.company}-${entry.period}`}
+                className="ab-exp__row"
+                index={i}
+              >
+                <span className="ab-exp__period">{entry.period}</span>
+                <span className="ab-exp__title">
+                  <span className="ab-exp__company">{entry.company}</span>
+                  <span className="ab-exp__role">{entry.role}</span>
+                </span>
+                <span className="ab-exp__tag">{entry.tag}</span>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 
