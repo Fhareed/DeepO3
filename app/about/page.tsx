@@ -28,29 +28,8 @@ const capabilities = [
   "MLOps & observability"
 ];
 
-/* Selected engagements. Add new rows below as collaborations ship. */
-const engagements = [
-  {
-    company: "AVEO AI",
-    location: "Vaasa, Finland",
-    status: "Shipped",
-    headline: "Gamified AI-literacy app for Finnish farmers.",
-    role: "Flipped Mentorship pilot, University of Vaasa",
-    partners: ["University of Vaasa", "Pohjanmaan Yrityskummit (Suomen Yrityskummit)"],
-    context:
-      "A Finnish SME building AI learning solutions for primary industries.",
-    summary:
-      "DeepO3 collaborated with AVEO AI to design and prototype a gamified learning platform, a Duolingo-style app that teaches farmers how to use AI tools in their day-to-day agricultural work. The brief was to take complex, structured AI training material and present it in a format that non-technical users could actually finish and enjoy.",
-    outcome:
-      "The pilot was well-received by AVEO AI's leadership. On the back of the prototype, AVEO AI proposed taking the platform forward with the Finnish government as a benefit for farmers after they pay their union dues, expanding the reach from a single company to a national cohort.",
-    image: "/about/aveo-ai-vaasa.jpg",
-    imageAlt:
-      "Group of students at the University of Vaasa game hall during the Flipped Mentorship programme with AVEO AI.",
-    ctaLabel: "Read the University of Vaasa write-up",
-    ctaHref:
-      "https://www.uwasa.fi/en/newshub/news/students-developing-gamified-learning-solution-flipped-mentorship-programme-engaged",
-    reverse: false
-  },
+/* DeepO3's active collaborations. New engagements slot in below PaperPilot. */
+const deepO3Collaborations = [
   {
     company: "PaperPilot",
     location: "Konstanz, Germany",
@@ -73,7 +52,36 @@ const engagements = [
       "PaperPilot onboarding assistant guiding international students through German bureaucracy.",
     ctaLabel: "Open PaperPilot",
     ctaHref: "https://paper-pilot.de/",
-    reverse: true
+    reverse: false
+  }
+];
+
+/* Founder's work before DeepO3. Credential signal, framed clearly as
+   prior collaborations rather than studio engagements. */
+const priorWork = [
+  {
+    company: "AVEO AI",
+    location: "Vaasa, Finland",
+    status: "Prototype shipped",
+    headline: "Gamified AI-literacy app for Finnish farmers.",
+    role: "Flipped Mentorship pilot, University of Vaasa (2025)",
+    partners: [
+      "University of Vaasa",
+      "Pohjanmaan Yrityskummit (Suomen Yrityskummit)"
+    ],
+    context:
+      "A Finnish SME building AI learning solutions for primary industries.",
+    summary:
+      "Before DeepO3, Farid was part of the student team that worked with AVEO AI through the University of Vaasa Flipped Mentorship pilot, a programme pairing international students with Ostrobothnian SMEs on real development briefs. The group designed and prototyped a gamified learning platform, a Duolingo-style app that teaches farmers how to use AI tools in their day-to-day agricultural work, taking complex structured training material and reshaping it into a format non-technical users could actually finish and enjoy.",
+    outcome:
+      "The pilot was well-received by AVEO AI's leadership. On the back of the prototype, AVEO AI proposed taking the platform forward with the Finnish government as a benefit for farmers after they pay their union dues, expanding the reach from a single company to a national cohort.",
+    image: "/about/aveo-ai-vaasa.jpg",
+    imageAlt:
+      "Group of students at the University of Vaasa game hall during the Flipped Mentorship programme with AVEO AI.",
+    ctaLabel: "Read the University of Vaasa write-up",
+    ctaHref:
+      "https://www.uwasa.fi/en/newshub/news/students-developing-gamified-learning-solution-flipped-mentorship-programme-engaged",
+    reverse: false
   }
 ];
 
@@ -189,25 +197,24 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* (2) Engagements — AVEO AI then PaperPilot. */}
+      {/* (2) DeepO3 collaborations — PaperPilot (and future entries). */}
       <section className="dx-section dx-section--paper">
         <div className="dx-container">
           <Reveal as="header" className="dx-section-head ab-sec-head">
-            <p className="dx-eyebrow">Selected collaborations</p>
+            <p className="dx-eyebrow">DeepO3 collaborations</p>
             <h2 className="dx-h2">
-              Partnerships with companies, universities and the people who use
-              the result.
+              Live products built with partners who use them every day.
             </h2>
             <p className="dx-body">
-              Each collaboration below pairs DeepO3 with an operating partner
-              and, where relevant, a research institution. The common thread
-              is live users and continuous delivery, not pilots that sit on a
+              Each engagement below pairs DeepO3 with an operating partner and,
+              where relevant, a research institution. The common thread is
+              real users and continuous delivery, not pilots that sit on a
               shelf.
             </p>
           </Reveal>
 
           <div className="ab-engagements">
-            {engagements.map((eng, idx) => (
+            {deepO3Collaborations.map((eng) => (
               <article
                 key={eng.company}
                 className={`ab-feature${eng.reverse ? " ab-feature--reverse" : ""}`}
@@ -257,9 +264,7 @@ export default function AboutPage() {
                   </Reveal>
 
                   <Reveal index={5} className="ab-feature__outcome">
-                    <span className="ab-feature__outcomeLabel">
-                      {idx === 0 ? "Outcome" : "Today"}
-                    </span>
+                    <span className="ab-feature__outcomeLabel">Today</span>
                     <p className="dx-body">{eng.outcome}</p>
                   </Reveal>
 
@@ -311,8 +316,91 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* (4) Education. */}
+      {/* (4) Before DeepO3 — founder's prior collaborations, e.g. AVEO AI. */}
       <section className="dx-section dx-section--paper">
+        <div className="dx-container">
+          <Reveal as="header" className="dx-section-head ab-sec-head">
+            <p className="dx-eyebrow">Before DeepO3</p>
+            <h2 className="dx-h2">
+              Earlier collaborations that shaped how the studio works.
+            </h2>
+            <p className="dx-body">
+              Projects the founder shipped before DeepO3 formed, carried out
+              with Finnish SMEs and university partners. They are the proof of
+              approach the studio was built on: partner closely, prototype
+              fast, and hand over something people can keep running.
+            </p>
+          </Reveal>
+
+          <div className="ab-engagements">
+            {priorWork.map((eng) => (
+              <article
+                key={eng.company}
+                className={`ab-feature${eng.reverse ? " ab-feature--reverse" : ""}`}
+                aria-labelledby={`eng-${eng.company.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                <Reveal className="ab-feature__media">
+                  <RevealImage
+                    src={eng.image}
+                    alt={eng.imageAlt}
+                    aspectRatio="16 / 10"
+                  />
+                </Reveal>
+
+                <div className="ab-feature__text">
+                  <Reveal>
+                    <div className="ab-feature__top">
+                      <span className="dx-chip">{eng.company}</span>
+                      <span className="dx-chip">{eng.location}</span>
+                      <span className="dx-chip">{eng.status}</span>
+                    </div>
+                  </Reveal>
+
+                  <Reveal index={1}>
+                    <h3
+                      className="dx-h3"
+                      id={`eng-${eng.company.toLowerCase().replace(/\s+/g, "-")}`}
+                    >
+                      {eng.headline}
+                    </h3>
+                  </Reveal>
+
+                  <Reveal index={2}>
+                    <p className="ab-feature__role">
+                      {eng.role} · With {eng.partners.join(" and ")}
+                    </p>
+                  </Reveal>
+
+                  <Reveal index={3}>
+                    <p className="dx-body">{eng.summary}</p>
+                  </Reveal>
+
+                  <Reveal index={4}>
+                    <p className="dx-body">
+                      <span className="dx-muted">About the partner, </span>
+                      {eng.context}
+                    </p>
+                  </Reveal>
+
+                  <Reveal index={5} className="ab-feature__outcome">
+                    <span className="ab-feature__outcomeLabel">Outcome</span>
+                    <p className="dx-body">{eng.outcome}</p>
+                  </Reveal>
+
+                  <Reveal index={6} className="ab-feature__actions">
+                    <Btn href={eng.ctaHref} external>
+                      {eng.ctaLabel}
+                    </Btn>
+                  </Reveal>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* (5) Education. */}
+      <section className="dx-section">
         <div className="dx-container">
           <Reveal as="header" className="dx-section-head ab-sec-head">
             <p className="dx-eyebrow">Education</p>
@@ -338,7 +426,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* (5) Closing CTA. */}
+      {/* (6) Closing CTA. */}
       <section className="dx-section" aria-label="Start an engagement">
         <div className="dx-container dx-container--narrow ab-cta-inner">
           <Reveal>
