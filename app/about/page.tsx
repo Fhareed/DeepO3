@@ -28,8 +28,25 @@ const capabilities = [
   "MLOps & observability"
 ];
 
-/* DeepO3's active collaborations. New engagements slot in below PaperPilot. */
-const deepO3Collaborations = [
+/* DeepO3's active collaborations. New engagements slot in below. */
+type Engagement = {
+  company: string;
+  location: string;
+  status: string;
+  headline: string;
+  role: string;
+  partners?: string[];
+  context: string;
+  summary: string;
+  outcome: string;
+  image: string;
+  imageAlt: string;
+  ctaLabel: string;
+  ctaHref: string;
+  reverse: boolean;
+};
+
+const deepO3Collaborations: Engagement[] = [
   {
     company: "PaperPilot",
     location: "Konstanz, Germany",
@@ -53,12 +70,32 @@ const deepO3Collaborations = [
     ctaLabel: "Open PaperPilot",
     ctaHref: "https://paper-pilot.de/",
     reverse: false
+  },
+  {
+    company: "Restaurant ordering platforms",
+    location: "Germany",
+    status: "Live with multiple clients",
+    headline:
+      "Branded online ordering and payments for independent restaurants.",
+    role: "DeepO3 commercial engineering practice · Clients kept private by request",
+    context:
+      "Independent restaurants that want their own branded ordering flow instead of paying 20–30% per order to delivery aggregators.",
+    summary:
+      "DeepO3 designs and ships bilingual online ordering platforms for restaurants, with cart, checkout, payments and order routing to the kitchen baked in. Each build is tailored to the client's menu, workflow and brand, and includes product differentiators like a Glücksrad lucky-wheel at checkout that drives repeat orders. Where the client needs it, DeepO3 also ships a companion mobile app so customers order from their phone instead of mobile web.",
+    outcome:
+      "Live with multiple independent German restaurants, with new client-specific features and payment flows shipping continuously. A representative build is open for anyone to click through end to end at bestellsystem-beta.vercel.app.",
+    image: "/about/bestellsystem-ordering.jpg",
+    imageAlt:
+      "Mobile preview of a DeepO3-built restaurant ordering platform with bilingual UI and a lucky-wheel checkout feature.",
+    ctaLabel: "View a representative demo",
+    ctaHref: "https://bestellsystem-beta.vercel.app/",
+    reverse: true
   }
 ];
 
 /* Founder's work before DeepO3. Credential signal, framed clearly as
    prior collaborations rather than studio engagements. */
-const priorWork = [
+const priorWork: Engagement[] = [
   {
     company: "AVEO AI",
     location: "Vaasa, Finland",
@@ -206,10 +243,10 @@ export default function AboutPage() {
               Live products built with partners who use them every day.
             </h2>
             <p className="dx-body">
-              Each engagement below pairs DeepO3 with an operating partner and,
-              where relevant, a research institution. The common thread is
-              real users and continuous delivery, not pilots that sit on a
-              shelf.
+              Each engagement below pairs DeepO3 with an operating partner,
+              sometimes a research institution, sometimes an independent
+              business. The common thread is real users, payments where
+              needed, and continuous delivery, not pilots that sit on a shelf.
             </p>
           </Reveal>
 
@@ -248,7 +285,10 @@ export default function AboutPage() {
 
                   <Reveal index={2}>
                     <p className="ab-feature__role">
-                      {eng.role} · With {eng.partners.join(" and ")}
+                      {eng.role}
+                      {eng.partners && eng.partners.length > 0
+                        ? ` · With ${eng.partners.join(" and ")}`
+                        : ""}
                     </p>
                   </Reveal>
 
@@ -258,7 +298,11 @@ export default function AboutPage() {
 
                   <Reveal index={4}>
                     <p className="dx-body">
-                      <span className="dx-muted">About the partner, </span>
+                      <span className="dx-muted">
+                        {eng.partners && eng.partners.length > 0
+                          ? "About the partner, "
+                          : "About the clients, "}
+                      </span>
                       {eng.context}
                     </p>
                   </Reveal>
@@ -336,7 +380,10 @@ export default function AboutPage() {
 
                   <Reveal index={2}>
                     <p className="ab-feature__role">
-                      {eng.role} · With {eng.partners.join(" and ")}
+                      {eng.role}
+                      {eng.partners && eng.partners.length > 0
+                        ? ` · With ${eng.partners.join(" and ")}`
+                        : ""}
                     </p>
                   </Reveal>
 
@@ -346,7 +393,11 @@ export default function AboutPage() {
 
                   <Reveal index={4}>
                     <p className="dx-body">
-                      <span className="dx-muted">About the partner, </span>
+                      <span className="dx-muted">
+                        {eng.partners && eng.partners.length > 0
+                          ? "About the partner, "
+                          : "About the clients, "}
+                      </span>
                       {eng.context}
                     </p>
                   </Reveal>
