@@ -159,6 +159,41 @@ export const products: Product[] = [
         note: "Coming soon"
       }
     ]
+  },
+  {
+    slug: "lumidesk",
+    title: "LumiDesk",
+    category: "AI Phone Receptionist",
+    status: "Private Beta",
+    accent: "#4bb3d6",
+    summary:
+      "An AI receptionist for small businesses that answers every call 24/7, in the caller's language, and books the job — so a missed call never becomes a lost customer.",
+    positioning:
+      "The AI receptionist that never misses a call.",
+    whyBuilt:
+      "Small businesses lose real revenue to missed calls — the plumber on a job, the salon mid-service, the clinic closed for the evening. LumiDesk picks up every single ring, holds a natural conversation in the caller's own language, and books the appointment straight into the business's calendar. It is the DeepO3 answer for owner-operated businesses that cannot justify a human receptionist but cannot afford to keep losing the next customer either.",
+    features: [
+      "Answers 24/7, including after-hours, weekends, and when the owner is on the job",
+      "Converses in the caller's language, so no customer is turned away for a language mismatch",
+      "Books jobs and appointments straight into the business's calendar, with human-readable summaries sent to the owner"
+    ],
+    stack: [
+      "Real-time speech-to-speech voice agent",
+      "Multilingual LLM pipeline with language auto-detect",
+      "Calendar integration layer",
+      "Call recording, transcription and audit log",
+      "Private-beta waitlist and operator dashboard"
+    ],
+    demos: [
+      {
+        label: "Join the waiting list",
+        href: "https://lumidesk-landing.vercel.app"
+      },
+      {
+        label: "Availability",
+        note: "Private beta — onboarding small-business pilots now."
+      }
+    ]
   }
 ];
 

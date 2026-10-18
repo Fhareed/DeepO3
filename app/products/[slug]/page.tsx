@@ -22,10 +22,18 @@ const HERO_IMAGES: Record<string, string> = {
   paperpilot:
     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=2000&q=85",
   tradingagents:
-    "https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&w=2000&q=85"
+    "https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&w=2000&q=85",
+  lumidesk: "/products/lumidesk-cover.jpg"
 };
 const FALLBACK_HERO =
   "https://images.unsplash.com/photo-1757466762489-52fea38071ad?auto=format&fit=crop&w=2400&q=85";
+
+/* Products that have a looping hero video. When present, we render the
+   video in place of the still image; the still remains available as a
+   poster frame. */
+const HERO_VIDEOS: Record<string, string> = {
+  lumidesk: "/products/lumidesk-hero.mp4"
+};
 
 /* Small teal check marker for the stack + capability lists. */
 const Check = () => (
@@ -101,6 +109,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
   }
 
   const heroSrc = HERO_IMAGES[product.slug] ?? FALLBACK_HERO;
+  const heroVideo = HERO_VIDEOS[product.slug];
 
   return (
     <div className="dx-page">
@@ -118,15 +127,30 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         </div>
       </section>
 
-      {/* -------- 2. Hero image -------- */}
+      {/* -------- 2. Hero image or looping hero video -------- */}
       <div className="pd-hero-wrap">
         <div className="dx-container">
           <Reveal>
-            <RevealImage
-              src={heroSrc}
-              alt={`${product.title} — ${product.category}`}
-              aspectRatio="16 / 9"
-            />
+            {heroVideo ? (
+              <div className="pd-hero-video" style={{ aspectRatio: "16 / 9" }}>
+                <video
+                  src={heroVideo}
+                  poster={heroSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label={`${product.title} — ${product.category}`}
+                />
+              </div>
+            ) : (
+              <RevealImage
+                src={heroSrc}
+                alt={`${product.title} — ${product.category}`}
+                aspectRatio="16 / 9"
+              />
+            )}
           </Reveal>
         </div>
       </div>

@@ -31,7 +31,8 @@ const PRODUCT_IMAGES: Record<string, string> = {
   paperpilot:
     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
   tradingagents:
-    "https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&w=1600&q=85"
+    "https://images.unsplash.com/photo-1644088379091-d574269d422f?auto=format&fit=crop&w=1600&q=85",
+  lumidesk: "/products/lumidesk-cover.jpg"
 };
 
 const FALLBACK_IMAGES = [

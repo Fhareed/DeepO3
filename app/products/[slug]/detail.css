@@ -33,6 +33,26 @@
   padding-bottom: clamp(48px, 7vw, 112px);
 }
 
+/* Hero video — same rounded frame treatment as .dx-imgframe, so a video
+   drop-in matches the still-image hero on every other product. */
+.pd-hero-video {
+  position: relative;
+  width: 100%;
+  border-radius: var(--dx-r-lg, 24px);
+  overflow: hidden;
+  background: var(--dx-paper, #f5f4f3);
+  isolation: isolate;
+}
+
+.pd-hero-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* -------- Overview -------- */
 .pd-overview {
   margin-top: 6px;
